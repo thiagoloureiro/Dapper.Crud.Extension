@@ -16,7 +16,7 @@ namespace Dapper.Crud.VSExtension
         public Form1()
         {
             InitializeComponent();
-            //   SetTxtStyles();
+            SetTxtStyles();
         }
 
         private IEnumerable<string> FilterFileList(List<string> files)
