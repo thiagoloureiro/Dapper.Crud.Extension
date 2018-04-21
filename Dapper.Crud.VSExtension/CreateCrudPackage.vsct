@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<Extern href="stdidcmd.h" />
+	<Extern href="vsshlids.h" />
+	<Commands package="guidCreateCrudPackage">
+		<Groups>
+			<Group guid="guidCreateCrudPackageCmdSet" id="MyMenuGroup" priority="0x0300">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+			</Group>
+		</Groups>
+		<Buttons>
+			<Button guid="guidCreateCrudPackageCmdSet" id="CreateCrudId" priority="0x0100" type="Button">
+				<Parent guid="guidCreateCrudPackageCmdSet" id="MyMenuGroup" />
+				<Icon guid="guidImages" id="bmpPic1" />
+				<Strings>
+					<ButtonText>Generate Dapper CRUD</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidCreateCrudPackageCmdSet" id="cmdidConfigureWindowCommand" priority="0x0100" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+				<Icon guid="guidImages1" id="bmpPic1" />
+				<Strings>
+					<ButtonText>ConfigureWindow</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+		<Bitmaps>
+			<Bitmap guid="guidImages" href="Resources\CreateCrud.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+			<Bitmap guid="guidImages1" href="Resources\ConfigureWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+		</Bitmaps>
+	</Commands>
+	<Symbols>
+		<GuidSymbol name="guidCreateCrudPackage" value="{cb7802c6-dd51-4368-ad9a-413841cf0287}" />
+		<GuidSymbol name="guidCreateCrudPackageCmdSet" value="{704a8694-77df-4cfa-a203-059417b250d9}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="CreateCrudId" value="0x0100" />
+			<IDSymbol value="4129" name="cmdidConfigureWindowCommand" />
+		</GuidSymbol>
+		<GuidSymbol name="guidImages" value="{2b2b4480-3d04-4db9-b340-3a43c9b48d3f}">
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+
+		<GuidSymbol value="{ceb0b707-343b-48be-960e-5b57bb66486a}" name="guidImages1">
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
