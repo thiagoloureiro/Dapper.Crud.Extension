@@ -85,6 +85,7 @@
     <VSCTCompile Include="CreateCrudPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
+    <Content Include="dll\ScintillaNET.dll" />
     <Content Include="index.html" />
     <Content Include="Resources\ConfigureWindowCommand.png" />
     <Content Include="Resources\CreateCrud.png" />
