@@ -33,7 +33,24 @@ namespace Dapper.Crud.VSExtension
             txtOutput.Text = string.Empty;
             foreach (var item in lstFiles.Items)
             {
-                txtOutput.Text += DapperGenerator.Select(item.ToString());
+                var model = item.ToString();
+
+                if (chkClass.Checked)
+                {
+                    txtOutput.Text += ClassGenerator.Generate(MethodGenerator.GenerateSelect(DapperGenerator.Select(model), model), model, chkInterface.Checked);
+                }
+                else
+                {
+                    if (chkGenerateMethod.Checked)
+                        txtOutput.Text += MethodGenerator.GenerateSelect(DapperGenerator.Select(model), model);
+                    else
+                        txtOutput.Text += DapperGenerator.Select(model);
+                }
+
+                if (chkInterface.Checked)
+                {
+                    txtOutput.Text += InterfaceGenerator.GenerateSelect(model);
+                }
             }
         }
 
@@ -74,6 +91,11 @@ namespace Dapper.Crud.VSExtension
             {
                 lstFiles.Items.Add(file.Replace(Projectpath, "").Replace(".cs", ""));
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtOutput.Text = string.Empty;
         }
     }
 }
