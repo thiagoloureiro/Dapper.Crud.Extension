@@ -32,7 +32,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Logger.Log("Error getting the active project" + ex);
+                Logger.Log("Error getting the active project" + ex);
             }
 
             return null;

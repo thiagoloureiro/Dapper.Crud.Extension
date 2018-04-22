@@ -25,7 +25,7 @@
 			</Button>
 		</Buttons>
 		<Bitmaps>
-			<Bitmap guid="guidImages" href="Resources\CreateCrud.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+			<Bitmap guid="guidImages" href="Resources\settings.png" usedList="bmpPic1" />
 			<Bitmap guid="guidImages1" href="Resources\ConfigureWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
 		</Bitmaps>
 	</Commands>
@@ -38,11 +38,6 @@
 		</GuidSymbol>
 		<GuidSymbol name="guidImages" value="{2b2b4480-3d04-4db9-b340-3a43c9b48d3f}">
 			<IDSymbol name="bmpPic1" value="1" />
-			<IDSymbol name="bmpPic2" value="2" />
-			<IDSymbol name="bmpPicSearch" value="3" />
-			<IDSymbol name="bmpPicX" value="4" />
-			<IDSymbol name="bmpPicArrows" value="5" />
-			<IDSymbol name="bmpPicStrikethrough" value="6" />
 		</GuidSymbol>
 
 		<GuidSymbol value="{ceb0b707-343b-48be-960e-5b57bb66486a}" name="guidImages1">

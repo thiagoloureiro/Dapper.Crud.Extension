@@ -95,6 +95,7 @@
     <Content Include="Resources\ConfigureWindowCommand.png" />
     <Content Include="Resources\CreateCrud.png" />
     <Content Include="Resources\CreateCrudPackage.ico" />
+    <Content Include="Resources\settings.png" />
     <Content Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>

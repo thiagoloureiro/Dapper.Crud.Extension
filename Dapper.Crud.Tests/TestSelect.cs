@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using Dapper.Crud.Tests.ModelTest;
+using Dapper.Crud.VSExtension.Helpers;
 using System.Collections.Generic;
 using System.Reflection;
-using Dapper.Crud.Tests.ModelTest;
-using Dapper.Crud.VSExtension.Helpers;
 using Xunit;
 
 namespace Dapper.Crud.Tests
@@ -17,7 +16,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Select("User", props);
+            var ret = DapperGenerator.Select("User", props, false, false);
 
             // Assert
             Assert.True(ret.Contains("SELECT Id, Name, Email FROM [User]"));

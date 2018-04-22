@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
-using Dapper.Crud.VSExtension.Helpers;
 
 namespace Dapper.Crud.VSExtension
 {
@@ -89,11 +87,9 @@ namespace Dapper.Crud.VSExtension
         {
             // Create the window with the unused ID.
 
-            var project = ProjectHelpers.GetActiveProject();
-
-            var projectpath = project.GetFullPath();
             var obj = new frmExtension();
             obj.Show();
+
             //string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
             //string title = "CreateCrud";
 

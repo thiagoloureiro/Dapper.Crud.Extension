@@ -1,4 +1,5 @@
 ﻿using Dapper.Crud.VSExtension.Helpers;
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using ScintillaNET;
 
 namespace Dapper.Crud.VSExtension
 {
@@ -18,40 +18,118 @@ namespace Dapper.Crud.VSExtension
         {
             InitializeComponent();
             SetTxtStyles();
+            LoadFiles();
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = string.Empty;
-            foreach (var item in lstFiles.CheckedItems)
+            try
             {
-                var model = item.ToString();
-                IList<PropertyInfo> properties = GetPropertyInfos(model);
+                Logger.Log("Initializing generation process...");
 
-                if (chkClass.Checked)
+                txtOutput.Text = string.Empty;
+                foreach (var item in lstFiles.CheckedItems)
                 {
-                    string output = ClassGenerator.Generate(MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties), model), model, chkInterface.Checked);
-                    txtOutput.Text += output;
+                    var model = item.ToString();
+                    IList<PropertyInfo> properties = GetPropertyInfos(model);
+                    string output = string.Empty;
 
-                    if (chkGenerateFiles.Checked)
-                        FileHelper.GenerateClass(output, model, Projectpath);
-                }
-                else
-                {
-                    if (chkGenerateMethod.Checked)
-                        txtOutput.Text += MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties), model);
+                    if (chkClass.Checked)
+                    {
+                        output += ClassGenerator.GenerateClassBody(model, chkInterface.Checked);
+
+                        if (chkSelect.Checked)
+                            output += MethodGenerator.GenerateSelect(
+                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                model, chkClass.Checked);
+
+                        if (chkInsert.Checked)
+                            output += MethodGenerator.GenerateInsert(
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                model, chkClass.Checked);
+
+                        if (chkUpdate.Checked)
+                            output += MethodGenerator.GenerateUpdate(
+                                DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                model, chkClass.Checked);
+
+                        if (chkDelete.Checked)
+                            output += MethodGenerator.GenerateDelete(
+                                DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                model, chkClass.Checked);
+
+                        output += "}";
+
+                        txtOutput.Text += output;
+
+                        if (chkGenerateFiles.Checked)
+                            FileHelper.GenerateClass(output, model, Projectpath);
+                    }
                     else
-                        txtOutput.Text += DapperGenerator.Select(model, properties);
-                }
+                    {
+                        if (chkGenerateMethod.Checked)
+                        {
+                            if (chkSelect.Checked)
+                                txtOutput.Text +=
+                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
 
-                if (chkInterface.Checked)
-                {
-                    string output = InterfaceGenerator.GenerateSelect(model);
-                    txtOutput.Text += output;
+                            if (chkInsert.Checked)
+                                txtOutput.Text +=
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
 
-                    if (chkGenerateFiles.Checked)
-                        FileHelper.GenerateInterface(output, model, Projectpath);
+                            if (chkUpdate.Checked)
+                                txtOutput.Text +=
+                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+
+                            if (chkDelete.Checked)
+                                txtOutput.Text +=
+                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                        }
+                        else
+                        {
+                            if (chkSelect.Checked)
+                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+
+                            if (chkInsert.Checked)
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+
+                            if (chkUpdate.Checked)
+                                txtOutput.Text += DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+
+                            if (chkDelete.Checked)
+                                txtOutput.Text += DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                        }
+                    }
+
+                    if (chkInterface.Checked)
+                    {
+                        output = InterfaceGenerator.GenerateInterfaceBody(model);
+
+                        if (chkSelect.Checked)
+                            output += InterfaceGenerator.GenerateSelect(model);
+
+                        if (chkInsert.Checked)
+                            output += InterfaceGenerator.GenerateInsert(model);
+
+                        if (chkUpdate.Checked)
+                            output += InterfaceGenerator.GenerateUpdate(model);
+
+                        if (chkDelete.Checked)
+                            output += InterfaceGenerator.GenerateDelete(model);
+
+                        output += "}";
+
+                        txtOutput.Text += output;
+
+                        if (chkGenerateFiles.Checked)
+                            FileHelper.GenerateInterface(output, model, Projectpath);
+                    }
                 }
+                Logger.Log($"Process Completed Successfully!");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
             }
         }
 
@@ -80,6 +158,11 @@ namespace Dapper.Crud.VSExtension
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            LoadFiles();
+        }
+
+        private void LoadFiles()
+        {
             lstFiles.Items.Clear();
             var project = ProjectHelpers.GetActiveProject();
 
@@ -106,6 +189,19 @@ namespace Dapper.Crud.VSExtension
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtOutput.Text = string.Empty;
+        }
+
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            chkSelect.Checked = true;
+            chkInsert.Checked = true;
+            chkUpdate.Checked = true;
+            chkDelete.Checked = true;
+        }
+
+        private void chkClass_CheckedChanged(object sender, EventArgs e)
+        {
+            chkGenerateMethod.Checked = chkClass.Checked;
         }
     }
 }

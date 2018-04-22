@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace Dapper.Crud.VSExtension.Logger
+namespace Dapper.Crud.VSExtension
 {
-    internal static class Logger
+    public static class Logger
     {
         private static string _name;
         private static IVsOutputWindowPane _pane;
