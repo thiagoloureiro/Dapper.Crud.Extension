@@ -9,11 +9,11 @@ using ScintillaNET;
 
 namespace Dapper.Crud.VSExtension
 {
-    public partial class Form1 : Form
+    public partial class frmExtension : Form
     {
         public string Projectpath;
 
-        public Form1()
+        public frmExtension()
         {
             InitializeComponent();
             SetTxtStyles();
@@ -28,24 +28,9 @@ namespace Dapper.Crud.VSExtension
             return files;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            lstFiles.Items.Clear();
-            var project = ProjectHelpers.GetActiveProject();
-
-            Projectpath = project.GetFullPath();
-
-            var files = Directory.GetFiles(Projectpath, "*.cs", SearchOption.AllDirectories).ToList();
-            var filteredList = FilterFileList(files);
-
-            foreach (var file in filteredList)
-            {
-                lstFiles.Items.Add(file.Replace(Projectpath, "").Replace(".cs", ""));
-            }
-        }
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            txtOutput.Text = string.Empty;
             foreach (var item in lstFiles.Items)
             {
                 txtOutput.Text += DapperGenerator.Select(item.ToString());
@@ -73,6 +58,22 @@ namespace Dapper.Crud.VSExtension
             txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
             txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
             txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            lstFiles.Items.Clear();
+            var project = ProjectHelpers.GetActiveProject();
+
+            Projectpath = project.GetFullPath();
+
+            var files = Directory.GetFiles(Projectpath, "*.cs", SearchOption.AllDirectories).ToList();
+            var filteredList = FilterFileList(files);
+
+            foreach (var file in filteredList)
+            {
+                lstFiles.Items.Add(file.Replace(Projectpath, "").Replace(".cs", ""));
+            }
         }
     }
 }

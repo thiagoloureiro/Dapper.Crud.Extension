@@ -61,11 +61,11 @@
     </Compile>
     <Compile Include="CreateCrud.cs" />
     <Compile Include="CreateCrudPackage.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="frmExtension.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmExtension.Designer.cs">
+      <DependentUpon>frmExtension.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DapperGenerator.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
@@ -156,8 +156,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmExtension.resx">
+      <DependentUpon>frmExtension.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>

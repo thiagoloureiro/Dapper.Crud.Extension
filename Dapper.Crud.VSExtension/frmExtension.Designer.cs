@@ -1,6 +1,6 @@
 ﻿namespace Dapper.Crud.VSExtension
 {
-    partial class Form1
+    partial class frmExtension
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.lstFiles = new System.Windows.Forms.CheckedListBox();
             this.chkGenerateClass = new System.Windows.Forms.CheckBox();
             this.chkInsert = new System.Windows.Forms.CheckBox();
@@ -39,15 +39,15 @@
             this.txtOutput = new ScintillaNET.Scintilla();
             this.SuspendLayout();
             // 
-            // button1
+            // btnLoad
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Load";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLoad.Location = new System.Drawing.Point(12, 12);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 0;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // lstFiles
             // 
@@ -125,7 +125,7 @@
             this.txtOutput.Size = new System.Drawing.Size(804, 610);
             this.txtOutput.TabIndex = 9;
             // 
-            // Form1
+            // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,10 +138,10 @@
             this.Controls.Add(this.chkInsert);
             this.Controls.Add(this.chkGenerateClass);
             this.Controls.Add(this.lstFiles);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLoad);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "frmExtension";
             this.Text = "Dapper Extension";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,7 +150,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.CheckedListBox lstFiles;
         private System.Windows.Forms.CheckBox chkGenerateClass;
         private System.Windows.Forms.CheckBox chkInsert;

@@ -92,7 +92,7 @@ namespace Dapper.Crud.VSExtension
             var project = ProjectHelpers.GetActiveProject();
 
             var projectpath = project.GetFullPath();
-            var obj = new Form1();
+            var obj = new frmExtension();
             obj.Show();
             //string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
             //string title = "CreateCrud";
