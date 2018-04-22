@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using ScintillaNET;
 
@@ -19,37 +20,37 @@ namespace Dapper.Crud.VSExtension
             SetTxtStyles();
         }
 
-        private IEnumerable<string> FilterFileList(List<string> files)
-        {
-            files.RemoveAll(x => x.Contains("TemporaryGeneratedFile"));
-            files.RemoveAll(x => x.Contains("AssemblyInfo.cs"));
-            files.RemoveAll(x => x.Contains("Program.cs"));
-            files.RemoveAll(x => x.Contains("Startup.cs"));
-            return files;
-        }
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             txtOutput.Text = string.Empty;
-            foreach (var item in lstFiles.Items)
+            foreach (var item in lstFiles.CheckedItems)
             {
                 var model = item.ToString();
+                IList<PropertyInfo> properties = GetPropertyInfos(model);
 
                 if (chkClass.Checked)
                 {
-                    txtOutput.Text += ClassGenerator.Generate(MethodGenerator.GenerateSelect(DapperGenerator.Select(model), model), model, chkInterface.Checked);
+                    string output = ClassGenerator.Generate(MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties), model), model, chkInterface.Checked);
+                    txtOutput.Text += output;
+
+                    if (chkGenerateFiles.Checked)
+                        FileHelper.GenerateClass(output, model, Projectpath);
                 }
                 else
                 {
                     if (chkGenerateMethod.Checked)
-                        txtOutput.Text += MethodGenerator.GenerateSelect(DapperGenerator.Select(model), model);
+                        txtOutput.Text += MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties), model);
                     else
-                        txtOutput.Text += DapperGenerator.Select(model);
+                        txtOutput.Text += DapperGenerator.Select(model, properties);
                 }
 
                 if (chkInterface.Checked)
                 {
-                    txtOutput.Text += InterfaceGenerator.GenerateSelect(model);
+                    string output = InterfaceGenerator.GenerateSelect(model);
+                    txtOutput.Text += output;
+
+                    if (chkGenerateFiles.Checked)
+                        FileHelper.GenerateInterface(output, model, Projectpath);
                 }
             }
         }
@@ -85,12 +86,21 @@ namespace Dapper.Crud.VSExtension
             Projectpath = project.GetFullPath();
 
             var files = Directory.GetFiles(Projectpath, "*.cs", SearchOption.AllDirectories).ToList();
-            var filteredList = FilterFileList(files);
+            var filteredList = FileHelper.FilterFileList(files);
 
             foreach (var file in filteredList)
             {
-                lstFiles.Items.Add(file.Replace(Projectpath, "").Replace(".cs", ""));
+                var model = file.Replace(Projectpath, "").Replace(".cs", "");
+                lstFiles.Items.Add(model);
             }
+        }
+
+        private IList<PropertyInfo> GetPropertyInfos(string model)
+        {
+            var file = Projectpath + model + ".cs";
+            var objectModel = ModelHelper.Generate(File.ReadAllLines(file), File.ReadAllText(file), model);
+            IList<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
+            return props;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

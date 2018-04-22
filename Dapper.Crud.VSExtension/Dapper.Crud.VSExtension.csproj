@@ -67,11 +67,13 @@
     <Compile Include="frmExtension.Designer.cs">
       <DependentUpon>frmExtension.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="Helpers\ClassGenerator.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\MethodGenerator.cs" />
     <Compile Include="Helpers\DapperGenerator.cs" />
-    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\InterfaceGenerator.cs" />
+    <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\ProjectHelper.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

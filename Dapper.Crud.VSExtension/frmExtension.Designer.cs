@@ -40,6 +40,7 @@
             this.chkInterface = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.chkClass = new System.Windows.Forms.CheckBox();
+            this.chkGenerateFiles = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -160,11 +161,22 @@
             this.chkClass.Text = "Generate Class";
             this.chkClass.UseVisualStyleBackColor = true;
             // 
+            // chkGenerateFiles
+            // 
+            this.chkGenerateFiles.AutoSize = true;
+            this.chkGenerateFiles.Location = new System.Drawing.Point(12, 291);
+            this.chkGenerateFiles.Name = "chkGenerateFiles";
+            this.chkGenerateFiles.Size = new System.Drawing.Size(94, 17);
+            this.chkGenerateFiles.TabIndex = 13;
+            this.chkGenerateFiles.Text = "Generate Files";
+            this.chkGenerateFiles.UseVisualStyleBackColor = true;
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1201, 663);
+            this.Controls.Add(this.chkGenerateFiles);
             this.Controls.Add(this.chkClass);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.chkInterface);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.CheckBox chkInterface;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.CheckBox chkClass;
+        private System.Windows.Forms.CheckBox chkGenerateFiles;
     }
 }
