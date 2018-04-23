@@ -9,3 +9,5 @@ Initial Development
 - Extension Creation
 - Helpers
 - Class / Method / Interface Generator
+
+** This extension is not released yet, there are some work to do.
