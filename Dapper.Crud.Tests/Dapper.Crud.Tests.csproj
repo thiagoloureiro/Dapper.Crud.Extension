@@ -55,9 +55,11 @@
     <Compile Include="ModelTest\User.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestDelete.cs" />
     <Compile Include="TestInsert.cs" />
     <Compile Include="TestSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dapper.Crud.VSExtension\Dapper.Crud.VSExtension.csproj">
