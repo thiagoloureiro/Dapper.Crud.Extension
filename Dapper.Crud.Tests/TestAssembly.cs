@@ -10,7 +10,7 @@ namespace Dapper.Crud.Tests.ModelTest
         public void TestGenerateInstance()
         {
             // Arrange
-            var path = System.IO.Path.GetFullPath(@"..\..\");
+            var path = Path.GetFullPath(@"..\..\");
             var objText = File.ReadAllText(path + "\\ModelTest\\User.cs");
 
             // Act

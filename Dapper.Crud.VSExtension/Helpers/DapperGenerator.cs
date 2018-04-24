@@ -155,9 +155,9 @@ namespace Dapper.Crud.VSExtension.Helpers
             foreach (var prop in properties)
             {
                 if (prop.Equals(last))
-                    str += $"@{prop.Name} = {model.ToLower()}.{prop.Name}";
+                    str += $"{prop.Name} = {model.ToLower()}.{prop.Name}";
                 else
-                    str += $"@{prop.Name} = {model.ToLower()}.{prop.Name}, ";
+                    str += $"{prop.Name} = {model.ToLower()}.{prop.Name}, ";
             }
             return str;
         }

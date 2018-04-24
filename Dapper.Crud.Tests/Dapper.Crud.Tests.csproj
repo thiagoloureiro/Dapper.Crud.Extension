@@ -51,10 +51,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyTest.cs" />
+    <Compile Include="TestAssembly.cs" />
     <Compile Include="ModelTest\User.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="TestInsert.cs" />
     <Compile Include="TestSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
