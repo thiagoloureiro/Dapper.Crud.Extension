@@ -19,8 +19,8 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.Update("User", props, false, false);
 
             // Assert
-            Assert.True(ret.Contains("UPDATE [User] SET Id = @Id, Name = @Name, Email = @Email WHERE Id = @Id"));
-            Assert.True(ret.Contains("db.Execute(sql, new { Id = user.Id, Name = user.Name, Email = user.Email }, commandType: CommandType.Text);"));
+            Assert.Contains("UPDATE [User] SET Id = @Id, Name = @Name, Email = @Email WHERE Id = @Id", ret);
+            Assert.Contains("db.Execute(sql, new { Id = user.Id, Name = user.Name, Email = user.Email }, commandType: CommandType.Text);", ret);
         }
     }
 }

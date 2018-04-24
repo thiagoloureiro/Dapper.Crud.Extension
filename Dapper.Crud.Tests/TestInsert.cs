@@ -19,8 +19,8 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.Insert("User", props, false, false);
 
             // Assert
-            Assert.True(ret.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)"));
-            Assert.True(ret.Contains("db.Execute(sql, new { Id = user.Id, Name = user.Name, Email = user.Email }, commandType: CommandType.Text);"));
+            Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
+            Assert.Contains("db.Execute(sql, new { Id = user.Id, Name = user.Name, Email = user.Email }, commandType: CommandType.Text);", ret);
         }
     }
 }

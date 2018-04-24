@@ -19,8 +19,8 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.Select("User", props, false, false);
 
             // Assert
-            Assert.True(ret.Contains("SELECT Id, Name, Email FROM [User]"));
-            Assert.True(ret.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();"));
+            Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
+            Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
         }
     }
 }

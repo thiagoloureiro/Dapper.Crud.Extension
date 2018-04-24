@@ -2,7 +2,7 @@
 using Dapper.Crud.VSExtension.Helpers;
 using Xunit;
 
-namespace Dapper.Crud.Tests.ModelTest
+namespace Dapper.Crud.Tests
 {
     public class AssemblyTest
     {
