@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfaceTest.cs" />
     <Compile Include="TestAssembly.cs" />
     <Compile Include="ModelTest\User.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
