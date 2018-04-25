@@ -25,7 +25,7 @@ namespace Dapper.Crud.Tests
             var ret = InterfaceGenerator.GenerateSelect(model);
 
             // Assert
-            Assert.Contains($"List<{model}> Select{model}();", ret);
+            Assert.Contains($"List<User> SelectUser();", ret);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Dapper.Crud.Tests
             var ret = InterfaceGenerator.GenerateInsert(model);
 
             // Assert
-            Assert.Contains($"void Insert{model}({model} {model.ToLower()});", ret);
+            Assert.Contains($"void InsertUser(User user);", ret);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Dapper.Crud.Tests
             var ret = InterfaceGenerator.GenerateUpdate(model);
 
             // Assert
-            Assert.Contains($"void Update{model}({model} {model.ToLower()});", ret);
+            Assert.Contains($"void UpdateUser(User user);", ret);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Dapper.Crud.Tests
             var ret = InterfaceGenerator.GenerateDelete(model);
 
             // Assert
-            Assert.Contains($"void Delete{model}({model} {model.ToLower()});", ret);
+            Assert.Contains($"void DeleteUser(User user);", ret);
         }
     }
 }
