@@ -90,6 +90,10 @@
     <Content Include="Resources\ConfigureWindowCommand.png" />
     <Content Include="Resources\CreateCrud.png" />
     <Content Include="Resources\CreateCrudPackage.ico" />
+    <Content Include="Resources\settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Gear.png" />
     <Content Include="Resources\settings.png" />
     <Content Include="stylesheet.css" />
@@ -122,6 +126,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />

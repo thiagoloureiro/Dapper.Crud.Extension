@@ -6,21 +6,21 @@ using Xunit;
 
 namespace Dapper.Crud.Tests
 {
-    public class TestSelect
+    public class TestInsert
     {
         [Fact]
-        public void GenerateSelect()
+        public void GenerateInsert()
         {
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Select("User", props, false, false);
+            var ret = DapperGenerator.Insert("User", props, false, false);
 
             // Assert
-            Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
-            Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
+            Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
+            Assert.Contains("db.Execute(sql, new { Id = user.Id, Name = user.Name, Email = user.Email }, commandType: CommandType.Text);", ret);
         }
     }
 }
