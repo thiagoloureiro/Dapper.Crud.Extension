@@ -12,7 +12,6 @@ namespace Dapper.Crud.VSExtension
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(CreateCrudPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    [ProvideToolWindow(typeof(Dapper.Crud.VSExtension.ConfigureWindow))]
     public sealed class CreateCrudPackage : Package
     {
         public DTE2 Dte;
@@ -44,7 +43,6 @@ namespace Dapper.Crud.VSExtension
             Dte = GetService(typeof(DTE)) as DTE2;
             Instance = this;
             Logger.Initialize(this, "Dapper CRUD Generator");
-            Dapper.Crud.VSExtension.ConfigureWindowCommand.Initialize(this);
         }
 
         #endregion Package Members

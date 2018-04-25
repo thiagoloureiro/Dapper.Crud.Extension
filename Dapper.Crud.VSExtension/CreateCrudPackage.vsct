@@ -16,17 +16,9 @@
 					<ButtonText>Generate Dapper CRUD</ButtonText>
 				</Strings>
 			</Button>
-			<Button guid="guidCreateCrudPackageCmdSet" id="cmdidConfigureWindowCommand" priority="0x0100" type="Button">
-				<Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-				<Icon guid="guidImages1" id="bmpPic1" />
-				<Strings>
-					<ButtonText>ConfigureWindow</ButtonText>
-				</Strings>
-			</Button>
 		</Buttons>
 		<Bitmaps>
 			<Bitmap guid="guidImages" href="Resources\settings.png" usedList="bmpPic1" />
-			<Bitmap guid="guidImages1" href="Resources\ConfigureWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
 		</Bitmaps>
 	</Commands>
 	<Symbols>
