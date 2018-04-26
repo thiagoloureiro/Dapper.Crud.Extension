@@ -4,10 +4,12 @@ VisualStudio Extension to create Easily CRUD queries with Dapper from Models
 ![](https://img.shields.io/appveyor/ci/thiagoloureiro/dapper-crud-extension.svg)
 ![](https://img.shields.io/appveyor/tests/thiagoloureiro/dapper-crud-extension.svg)
 
-Version 0.1
-Initial Development
-- Extension Creation
-- Helpers
-- Class / Method / Interface Generator
-
-** This extension is not released yet, there are some work to do.
+Version 1.1 Ready to release
+Included:
+- Insert
+- Select
+- Update
+- Delete
+- Class Generator
+- Interface Generator
+- Method Generator
