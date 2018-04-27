@@ -13,3 +13,5 @@ Included:
 - Class Generator
 - Interface Generator
 - Method Generator
+
+Release date: 28/04/2018
