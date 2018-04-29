@@ -46,6 +46,8 @@
             this.gBox = new System.Windows.Forms.GroupBox();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAutoIncrement = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -227,11 +229,31 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
+            // lblAutoIncrement
+            // 
+            this.lblAutoIncrement.AutoSize = true;
+            this.lblAutoIncrement.Location = new System.Drawing.Point(12, 611);
+            this.lblAutoIncrement.Name = "lblAutoIncrement";
+            this.lblAutoIncrement.Size = new System.Drawing.Size(179, 13);
+            this.lblAutoIncrement.TabIndex = 17;
+            this.lblAutoIncrement.Text = "When AutoIncrement is selected (Id)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 628);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "fields will not be added to insert/update clauses";
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 663);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAutoIncrement);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gBox);
             this.Controls.Add(this.chkGenerateFiles);
@@ -273,5 +295,7 @@
         private System.Windows.Forms.GroupBox gBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.Label lblAutoIncrement;
+        private System.Windows.Forms.Label label1;
     }
 }

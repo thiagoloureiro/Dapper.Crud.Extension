@@ -32,7 +32,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass)
+        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement)
         {
             var space = "";
 
@@ -41,7 +41,12 @@ namespace Dapper.Crud.VSExtension.Helpers
             if (generateClass)
                 space += "    ";
 
+            if (autoIncrement)
+                if (properties[0].Name.Contains("Id"))
+                    properties.RemoveAt(0);
+
             var sb = new StringBuilder();
+
             var prop = GenerateProperties(properties, false);
             var propAt = GenerateProperties(properties, true);
 
@@ -56,7 +61,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string Update(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass)
+        public static string Update(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement)
         {
             var space = "";
 
@@ -65,14 +70,27 @@ namespace Dapper.Crud.VSExtension.Helpers
             if (generateClass)
                 space += "    ";
 
+
+            // Creating a Id to use on Where before removed (in case of autoincrement)
+            var propId = properties[0];
+
+            if (autoIncrement)
+                if (properties[0].Name.Contains("Id"))
+                    properties.RemoveAt(0);
+
             var sb = new StringBuilder();
 
             sb.AppendLine(space + "// Update");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"UPDATE [{model}] SET {GenerateUpdateValues(properties)} WHERE {properties[0].Name} = @{properties[0].Name}\";");
+            sb.AppendLine(space + $"    const string sql = @\"UPDATE [{model}] SET {GenerateUpdateValues(properties)} WHERE {propId.Name} = @{propId.Name}\";");
             sb.AppendLine("");
-            sb.AppendLine(space + $"    db.Execute(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+
+            if (autoIncrement)
+                sb.AppendLine(space + $"    db.Execute(sql, new {{ {propId.Name} = {model.ToLower()}.{propId.Name}, {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+            else
+                sb.AppendLine(space + $"    db.Execute(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+
             sb.AppendLine(space + "}");
 
             return sb.ToString();
@@ -86,6 +104,7 @@ namespace Dapper.Crud.VSExtension.Helpers
                 space = "    ";
             if (generateClass)
                 space += "    ";
+
 
             var sb = new StringBuilder();
 

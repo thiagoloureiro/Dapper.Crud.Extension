@@ -89,6 +89,7 @@
   <ItemGroup>
     <VSCTCompile Include="CreateCrudPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
+      <SubType>Designer</SubType>
     </VSCTCompile>
     <Content Include="dll\ScintillaNET.dll" />
     <Content Include="index.html" />
@@ -96,6 +97,10 @@
     <Content Include="Resources\CreateCrud.png" />
     <Content Include="Resources\CreateCrudPackage.ico" />
     <Content Include="Resources\settings.png" />
+    <Content Include="Resources\settingsbig.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>

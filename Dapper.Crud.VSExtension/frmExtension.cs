@@ -32,6 +32,8 @@ namespace Dapper.Crud.VSExtension
                 {
                     var model = item.ToString();
                     IList<PropertyInfo> properties = GetPropertyInfos(model);
+                    IList<PropertyInfo> propertiesUpdate = GetPropertyInfos(model);
+
                     string output = string.Empty;
 
                     if (chkClass.Checked)
@@ -45,12 +47,12 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
-                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
                                 model, chkClass.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
-                                DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
                                 model, chkClass.Checked);
 
                         if (chkDelete.Checked)
@@ -75,11 +77,11 @@ namespace Dapper.Crud.VSExtension
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
@@ -91,10 +93,10 @@ namespace Dapper.Crud.VSExtension
                                 txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
 
                             if (chkInsert.Checked)
-                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
 
                             if (chkUpdate.Checked)
-                                txtOutput.Text += DapperGenerator.Update(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text += DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
