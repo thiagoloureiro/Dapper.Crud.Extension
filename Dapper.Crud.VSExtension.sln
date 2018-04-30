@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.VSExtension", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.Tests", "Dapper.Crud.Tests\Dapper.Crud.Tests.csproj", "{B360C8AD-69E6-4046-BEC6-E240DD5C6C51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.ModelExample", "Dapper.Crud.Model\Dapper.Crud.ModelExample.csproj", "{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B360C8AD-69E6-4046-BEC6-E240DD5C6C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B360C8AD-69E6-4046-BEC6-E240DD5C6C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B360C8AD-69E6-4046-BEC6-E240DD5C6C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
