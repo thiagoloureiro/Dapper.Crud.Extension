@@ -34,6 +34,7 @@ namespace Dapper.Crud.VSExtension
                     var model = item.ToString();
                     IList<PropertyInfo> properties = GetPropertyInfos(model);
                     IList<PropertyInfo> propertiesUpdate = GetPropertyInfos(model);
+                    IList<PropertyInfo> propertiesDelete = GetPropertyInfos(model);
 
                     string output = string.Empty;
 
@@ -58,7 +59,7 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkDelete.Checked)
                             output += MethodGenerator.GenerateDelete(
-                                DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked),
                                 model, chkClass.Checked);
 
                         output += "}";
@@ -86,7 +87,7 @@ namespace Dapper.Crud.VSExtension
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
                         }
                         else
                         {
@@ -100,7 +101,7 @@ namespace Dapper.Crud.VSExtension
                                 txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
 
                             if (chkDelete.Checked)
-                                txtOutput.Text += DapperGenerator.Delete(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked);
                         }
                     }
 

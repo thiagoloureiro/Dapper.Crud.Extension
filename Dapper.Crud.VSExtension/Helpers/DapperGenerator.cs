@@ -70,7 +70,6 @@ namespace Dapper.Crud.VSExtension.Helpers
             if (generateClass)
                 space += "    ";
 
-
             // Creating a Id to use on Where before removed (in case of autoincrement)
             var propId = properties[0];
 
@@ -105,13 +104,12 @@ namespace Dapper.Crud.VSExtension.Helpers
             if (generateClass)
                 space += "    ";
 
-
             var sb = new StringBuilder();
 
             sb.AppendLine(space + "// Delete");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"DELETE FROM [{model}] WHERE {properties[0].Name} = @{properties[0].Name} \";");
+            sb.AppendLine(space + $"    const string sql = @\"DELETE FROM [{model}] WHERE {properties[0].Name} = @{properties[0].Name}\";");
             sb.AppendLine("");
             sb.AppendLine(space + $"    db.Execute(sql, new {{ {model.ToLower()}.{properties[0].Name} }}, commandType: CommandType.Text);");
             sb.AppendLine(space + "}");
