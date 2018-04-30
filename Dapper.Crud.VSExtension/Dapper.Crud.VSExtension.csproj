@@ -54,7 +54,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CreateCrud.cs" />
     <Compile Include="CreateCrudPackage.cs" />
     <Compile Include="frmExtension.cs">
