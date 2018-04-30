@@ -42,7 +42,7 @@ namespace Dapper.Crud.VSExtension.Helpers
                 space += "    ";
 
             if (autoIncrement)
-                if (properties[0].Name.Contains("Id"))
+                if (properties[0].Name.ToLower().Contains("id"))
                     properties.RemoveAt(0);
 
             var sb = new StringBuilder();
@@ -74,7 +74,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             var propId = properties[0];
 
             if (autoIncrement)
-                if (properties[0].Name.Contains("Id"))
+                if (properties[0].Name.ToLower().Contains("id"))
                     properties.RemoveAt(0);
 
             var sb = new StringBuilder();
