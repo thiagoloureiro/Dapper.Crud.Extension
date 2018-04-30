@@ -38,6 +38,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         {
             object returnval = null;
             Assembly asm = BuildAssembly(code);
+
             object instance = null;
             Type type = null;
             if (isstatic)

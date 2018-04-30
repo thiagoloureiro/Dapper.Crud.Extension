@@ -1,4 +1,7 @@
-﻿namespace Dapper.Crud.VSExtension.Helpers
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Dapper.Crud.VSExtension.Helpers
 {
     public static class ModelHelper
     {
@@ -14,9 +17,39 @@
                     break;
                 }
             }
+
             o = AssemblyHelper.ExecuteCode(rawContent, nspace, model, false);
 
             return o;
+        }
+
+        private static List<string> Types()
+        {
+            var lst = new List<string>
+            {
+                "bool",
+                "byte",
+                "char",
+                "decimal",
+                "double",
+                "enum",
+                "float",
+                "int",
+                "long",
+                "sbyte",
+                "short",
+                "struct",
+                "uint",
+                "ulong",
+                "ushort",
+                "string",
+                "DateTime",
+                "Int",
+                "Int64",
+                "String"
+            };
+
+            return lst;
         }
     }
 }

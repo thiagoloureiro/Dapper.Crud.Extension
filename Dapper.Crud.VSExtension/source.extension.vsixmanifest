@@ -5,8 +5,8 @@
         <DisplayName>Dapper Crud Generator</DisplayName>
         <Description xml:space="preserve">Generate CRUD easily with Dapper from your existing Models</Description>
         <MoreInfo>https://github.com/thiagoloureiro/Dapper.Crud.Extension</MoreInfo>
-        <Icon>settings.png</Icon>
-        <PreviewImage>settingsbig.png</PreviewImage>
+        <Icon>Resources\settingsbig.png</Icon>
+        <PreviewImage>Resources\settingsbig.png</PreviewImage>
         <Tags>c#, dapper, model, crud, generator</Tags>
     </Metadata>
     <Installation>
