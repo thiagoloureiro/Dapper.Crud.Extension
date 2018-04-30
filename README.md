@@ -13,4 +13,3 @@ Version 1.3 Released
 # Download and Instructions:
 https://marketplace.visualstudio.com/items?itemName=thiagoguaru.DapperCrudGenerator
 
-Release date: 28/04/2018
