@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace Dapper.Crud.VSExtension.Helpers
 {
@@ -37,6 +39,40 @@ namespace Dapper.Crud.VSExtension.Helpers
             var content = File.ReadAllText(file);
 
             return content.Contains("public interface") || content.Contains("private interface");
+        }
+
+        public static string GenerateRawStringAllFiles(IEnumerable<string> fileList)
+        {
+            var lstUsings = new List<string>();
+            var lstContent = new List<string>();
+
+            foreach (var file in fileList)
+            {
+                var strContent = File.ReadAllLines(file);
+                foreach (var line in strContent)
+                {
+                    if (line.Contains("using"))
+                        lstUsings.Add(line);
+                    else
+                        lstContent.Add(line);
+                }
+            }
+
+            var sbResult = new StringBuilder();
+
+            List<string> lstUsingsFiltered = lstUsings.Distinct().ToList();
+
+            foreach (var item in lstUsingsFiltered)
+            {
+                sbResult.AppendLine(item);
+            }
+
+            foreach (var item in lstContent)
+            {
+                sbResult.AppendLine(item);
+            }
+
+            return sbResult.ToString();
         }
     }
 }

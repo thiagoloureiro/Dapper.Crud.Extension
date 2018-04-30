@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Dapper.Crud.VSExtension.Helpers
 {
@@ -23,7 +22,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return o;
         }
 
-        private static List<string> Types()
+        public static List<string> Types()
         {
             var lst = new List<string>
             {
@@ -45,6 +44,8 @@ namespace Dapper.Crud.VSExtension.Helpers
                 "string",
                 "DateTime",
                 "Int",
+                "Int16",
+                "Int32",
                 "Int64",
                 "String"
             };

@@ -13,6 +13,7 @@ namespace Dapper.Crud.VSExtension
     public partial class frmExtension : Form
     {
         public string Projectpath;
+        public string RawContent;
 
         public frmExtension()
         {
@@ -178,13 +179,26 @@ namespace Dapper.Crud.VSExtension
                 var model = file.Replace(Projectpath, "").Replace(".cs", "");
                 lstFiles.Items.Add(model);
             }
+
+            RawContent = FileHelper.GenerateRawStringAllFiles(filteredList);
         }
 
         private IList<PropertyInfo> GetPropertyInfos(string model)
         {
             var file = Projectpath + model + ".cs";
-            var objectModel = ModelHelper.Generate(File.ReadAllLines(file), File.ReadAllText(file), model);
-            IList<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
+            var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
+            List<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
+
+            var types = ModelHelper.Types();
+
+            foreach (var prop in props.ToList())
+            {
+                if (!types.Contains(prop.PropertyType.Name))
+                {
+                    props.Remove(prop);
+                }
+            }
+
             return props;
         }
 
