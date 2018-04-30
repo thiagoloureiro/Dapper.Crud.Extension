@@ -175,13 +175,14 @@ namespace Dapper.Crud.VSExtension
             var files = Directory.GetFiles(Projectpath, "*.cs", SearchOption.AllDirectories).ToList();
             var filteredList = FileHelper.FilterFileList(files);
 
-            foreach (var file in filteredList)
+            var fileList = filteredList.ToList();
+            foreach (var file in fileList)
             {
                 var model = file.Replace(Projectpath, "").Replace(".cs", "");
                 lstFiles.Items.Add(model);
             }
 
-            RawContent = FileHelper.GenerateRawStringAllFiles(filteredList);
+            RawContent = FileHelper.GenerateRawStringAllFiles(fileList);
         }
 
         private IList<PropertyInfo> GetPropertyInfos(string model)

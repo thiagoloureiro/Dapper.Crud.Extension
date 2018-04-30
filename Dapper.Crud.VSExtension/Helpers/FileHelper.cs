@@ -60,6 +60,10 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             var sbResult = new StringBuilder();
 
+            lstUsings.Add("using System.Linq;");
+            lstUsings.Add("using System.Text;");
+            lstUsings.Add("using System.ComponentModel;");
+
             List<string> lstUsingsFiltered = lstUsings.Distinct().ToList();
 
             foreach (var item in lstUsingsFiltered)

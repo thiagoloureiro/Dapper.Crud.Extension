@@ -1,6 +1,7 @@
 ﻿using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -12,11 +13,21 @@ namespace Dapper.Crud.VSExtension.Helpers
         {
             CSharpCodeProvider provider = new CSharpCodeProvider();
             ICodeCompiler compiler = provider.CreateCompiler();
+
             CompilerParameters compilerparams = new CompilerParameters
             {
                 GenerateExecutable = false,
                 GenerateInMemory = true
             };
+
+            compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
+            compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Core.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Data.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Data.DataSetExtensions.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Xml.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
+
             CompilerResults results =
                 compiler.CompileAssemblyFromSource(compilerparams, code);
             if (results.Errors.HasErrors)
