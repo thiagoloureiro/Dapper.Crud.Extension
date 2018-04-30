@@ -8,14 +8,9 @@ VisualStudio Extension to create Easily CRUD queries with Dapper from Models
 ![](https://img.shields.io/vscode-marketplace/r/thiagoguaru.DapperCrudGenerator.svg)
 
 
-Version 1.1 Ready to release
-Included:
-- Insert
-- Select
-- Update
-- Delete
-- Class Generator
-- Interface Generator
-- Method Generator
+Version 1.3 Released
+
+# Download and Instructions:
+https://marketplace.visualstudio.com/items?itemName=thiagoguaru.DapperCrudGenerator
 
 Release date: 28/04/2018
