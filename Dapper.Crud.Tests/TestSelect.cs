@@ -1,4 +1,4 @@
-﻿using Dapper.Crud.Tests.ModelTest;
+﻿using Dapper.Crud.ModelExample;
 using Dapper.Crud.VSExtension.Helpers;
 using System.Collections.Generic;
 using System.Reflection;

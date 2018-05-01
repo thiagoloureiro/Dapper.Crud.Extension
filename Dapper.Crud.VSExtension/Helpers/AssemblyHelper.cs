@@ -20,13 +20,15 @@ namespace Dapper.Crud.VSExtension.Helpers
                 GenerateInMemory = true
             };
 
-            compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
-            compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
+            compilerparams.ReferencedAssemblies.Add("System.dll");
             compilerparams.ReferencedAssemblies.Add("System.Core.dll");
             compilerparams.ReferencedAssemblies.Add("System.Data.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Data.Linq.dll");
             compilerparams.ReferencedAssemblies.Add("System.Data.DataSetExtensions.dll");
             compilerparams.ReferencedAssemblies.Add("System.Xml.dll");
             compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
+            compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
+            compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
 
             CompilerResults results =
                 compiler.CompileAssemblyFromSource(compilerparams, code);
