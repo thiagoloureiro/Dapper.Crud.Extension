@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Dapper.Crud.Tests
 {
-    public class InterfaceTest
+    public class TestInterface
     {
         private string model = "User";
 
