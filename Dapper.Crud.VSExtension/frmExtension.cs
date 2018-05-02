@@ -201,7 +201,32 @@ namespace Dapper.Crud.VSExtension
                 }
             }
 
-            return props;
+            var sortedProps = SortProperties(props);
+
+            return sortedProps;
+        }
+
+        private IList<PropertyInfo> SortProperties(IList<PropertyInfo> prop)
+        {
+            List<PropertyInfo> sortedProp = new List<PropertyInfo>();
+
+            foreach (var p in prop)
+            {
+                if (p.Name == "Id")
+                {
+                    sortedProp.Add(p);
+                    break;
+                }
+            }
+            foreach (var p in prop)
+            {
+                if (p.Name != "Id")
+                {
+                    sortedProp.Add(p);
+                }
+            }
+
+            return sortedProp;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
