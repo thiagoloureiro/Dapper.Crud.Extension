@@ -9,4 +9,3 @@ VisualStudio Extension to create Easily CRUD queries with Dapper from Models
 
 # Download and Instructions:
 https://marketplace.visualstudio.com/items?itemName=thiagoguaru.DapperCrudGenerator
-
