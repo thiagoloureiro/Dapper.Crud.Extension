@@ -7,7 +7,6 @@ namespace Dapper.Crud.VSExtension.Helpers
         public static object Generate(string[] content, string rawContent, string model)
         {
             var nspace = "";
-            var o = new object();
             foreach (var line in content)
             {
                 if (line.Contains("namespace"))
@@ -17,9 +16,7 @@ namespace Dapper.Crud.VSExtension.Helpers
                 }
             }
 
-            o = AssemblyHelper.ExecuteCode(rawContent, nspace, model, false);
-
-            return o;
+            return AssemblyHelper.ExecuteCode(rawContent, nspace, model, false);
         }
 
         public static List<string> Types()
