@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.VSExtension", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.Tests", "Dapper.Crud.Tests\Dapper.Crud.Tests.csproj", "{B360C8AD-69E6-4046-BEC6-E240DD5C6C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper.Crud.ModelExample", "Dapper.Crud.Model\Dapper.Crud.ModelExample.csproj", "{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper.Crud.ModelExample", "Dapper.Crud.Model\Dapper.Crud.ModelExample.csproj", "{E4C28AB2-FA18-48F6-A5C8-D952CB4210F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
