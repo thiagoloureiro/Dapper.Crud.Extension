@@ -7,6 +7,44 @@ namespace Dapper.Crud.VSExtension.Helpers
 {
     public static class DapperGenerator
     {
+        public static string SelectJoin(List<string> models, List<IList<PropertyInfo>> properties, bool generateMethod, bool generateClass)
+        {
+            var space = "";
+
+            if (generateMethod)
+                space = "    ";
+            if (generateClass)
+                space += "    ";
+
+            var sb = new StringBuilder();
+
+            var arrProp = new object[properties.Count];
+            for (int i = 0; i < properties.Count; i++)
+            {
+                arrProp[i] = properties[i];
+            }
+
+            var prop = GenerateProperties((IList<PropertyInfo>)arrProp[0], false);
+
+            sb.AppendLine(space + "// Select");
+            sb.AppendLine(space + $"List<{models[0]}> ret;");
+            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
+            sb.AppendLine(space + "{");
+            sb.AppendLine(space + $"    const string sql = @\"SELECT {prop} FROM [{models[0]}] D0");
+
+            for (int i = 1; i < arrProp.Length; i++)
+            {
+                sb.AppendLine(space + $"    INNER JOIN {models[i]} D{i} ON D0.AddressId = D{i}.Id\";");
+            }
+
+            sb.AppendLine("");
+            sb.AppendLine(space + $"    ret = db.Query<{models[0]}>(sql, commandType: CommandType.Text).ToList();");
+            sb.AppendLine(space + "}");
+            sb.AppendLine(space + "return ret;");
+
+            return sb.ToString();
+        }
+
         public static string Select(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass)
         {
             var space = "";
