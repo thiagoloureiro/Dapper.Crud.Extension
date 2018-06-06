@@ -23,7 +23,6 @@ namespace Dapper.Crud.Tests
             Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
         }
 
-
         [Fact]
         public void GenerateSelectJoin()
         {
