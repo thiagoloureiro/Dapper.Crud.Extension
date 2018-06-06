@@ -40,15 +40,15 @@ namespace Dapper.Crud.VSExtension
             if (_pane == null)
             {
                 ThreadHelper.JoinableTaskFactory.Run(async () =>
-               {
-                   if (_pane == null)
-                   {
-                       Guid guid = Guid.NewGuid();
-                       IVsOutputWindow output = (IVsOutputWindow)_provider.GetService(typeof(SVsOutputWindow));
-                       output.CreatePane(ref guid, _name, 1, 1);
-                       output.GetPane(ref guid, out _pane);
-                   }
-               });
+                {
+                    IVsOutputWindow output = (IVsOutputWindow)_provider.GetService(typeof(SVsOutputWindow));
+                    if (_pane == null)
+                    {
+                        Guid guid = Guid.NewGuid();
+                        output.CreatePane(ref guid, _name, 1, 1);
+                        output.GetPane(ref guid, out _pane);
+                    }
+                });
             }
 
             return _pane != null;

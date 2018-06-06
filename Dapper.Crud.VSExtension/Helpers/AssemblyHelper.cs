@@ -11,6 +11,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         private static Assembly BuildAssembly(string code)
         {
             CSharpCodeProvider provider = new CSharpCodeProvider();
+
             ICodeCompiler compiler = provider.CreateCompiler();
 
             CompilerParameters compilerparams = new CompilerParameters
