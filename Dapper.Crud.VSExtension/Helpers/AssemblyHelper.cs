@@ -10,11 +10,9 @@ namespace Dapper.Crud.VSExtension.Helpers
     {
         private static Assembly BuildAssembly(string code)
         {
-            CSharpCodeProvider provider = new CSharpCodeProvider();
+            var compiler = new CSharpCodeProvider();
 
-            ICodeCompiler compiler = provider.CreateCompiler();
-
-            CompilerParameters compilerparams = new CompilerParameters
+            var compilerparams = new CompilerParameters
             {
                 GenerateExecutable = false,
                 GenerateInMemory = true
