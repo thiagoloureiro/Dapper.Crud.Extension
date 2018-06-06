@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Threading;
 
 namespace Dapper.Crud.VSExtension
 {
@@ -38,16 +39,16 @@ namespace Dapper.Crud.VSExtension
         {
             if (_pane == null)
             {
-                ThreadHelper.Generic.Invoke(() =>
-                {
-                    if (_pane == null)
-                    {
-                        Guid guid = Guid.NewGuid();
-                        IVsOutputWindow output = (IVsOutputWindow)_provider.GetService(typeof(SVsOutputWindow));
-                        output.CreatePane(ref guid, _name, 1, 1);
-                        output.GetPane(ref guid, out _pane);
-                    }
-                });
+                ThreadHelper.JoinableTaskFactory.Run(async () =>
+               {
+                   if (_pane == null)
+                   {
+                       Guid guid = Guid.NewGuid();
+                       IVsOutputWindow output = (IVsOutputWindow)_provider.GetService(typeof(SVsOutputWindow));
+                       output.CreatePane(ref guid, _name, 1, 1);
+                       output.GetPane(ref guid, out _pane);
+                   }
+               });
             }
 
             return _pane != null;

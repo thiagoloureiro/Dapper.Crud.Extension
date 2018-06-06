@@ -49,7 +49,6 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static object ExecuteCode(string code, string namespacename, string classname, bool isstatic)
         {
-            object returnval = null;
             Assembly asm = BuildAssembly(code);
 
             object instance = null;
