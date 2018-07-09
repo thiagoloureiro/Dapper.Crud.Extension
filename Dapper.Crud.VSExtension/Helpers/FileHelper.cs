@@ -63,7 +63,6 @@ namespace Dapper.Crud.VSExtension.Helpers
             lstUsings.Add("using System.Linq;");
             lstUsings.Add("using System.Text;");
             lstUsings.Add("using System.ComponentModel;");
-            lstUsings.Add("using System.Web;");
 
             List<string> lstUsingsFiltered = lstUsings.Distinct().ToList();
 

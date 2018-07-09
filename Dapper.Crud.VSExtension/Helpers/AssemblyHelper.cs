@@ -27,7 +27,8 @@ namespace Dapper.Crud.VSExtension.Helpers
             compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
             compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
             compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Web");
+            compilerparams.ReferencedAssemblies.Add("System.Web.dll");
+            compilerparams.ReferencedAssemblies.Add("System.Web.Abstractions.dll");
 
             CompilerResults results =
                 compiler.CompileAssemblyFromSource(compilerparams, code);
