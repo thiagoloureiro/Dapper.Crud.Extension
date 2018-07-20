@@ -45,7 +45,8 @@ namespace Dapper.Crud.VSExtension.Helpers
                 "Int32",
                 "Int64",
                 "String",
-                "Nullable`1"
+                "Nullable`1",
+                "Guid"
             };
 
             return lst;
