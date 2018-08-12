@@ -134,6 +134,8 @@ namespace Dapper.Crud.VSExtension
             catch (Exception ex)
             {
                 Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
+                txtOutputLog.ForeColor = Color.Red;
+                txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
             }
         }
 
@@ -245,6 +247,15 @@ namespace Dapper.Crud.VSExtension
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
             chkGenerateMethod.Checked = chkClass.Checked;
+        }
+
+        private void btnSendLog_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("mailto: dappercrudgenerator@gmail.com");
         }
     }
 }

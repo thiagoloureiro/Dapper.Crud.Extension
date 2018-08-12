@@ -48,6 +48,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAutoIncrement = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.linkMail = new System.Windows.Forms.LinkLabel();
+            this.txtOutputLog = new System.Windows.Forms.TextBox();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -247,11 +251,53 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "fields will not be added to insert/update clauses";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 663);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Output Log";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(872, 663);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "If you find errors please submit this log to:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // linkMail
+            // 
+            this.linkMail.AutoSize = true;
+            this.linkMail.Location = new System.Drawing.Point(1078, 663);
+            this.linkMail.Name = "linkMail";
+            this.linkMail.Size = new System.Drawing.Size(164, 13);
+            this.linkMail.TabIndex = 23;
+            this.linkMail.TabStop = true;
+            this.linkMail.Text = "dappercrudgenerator@gmail.com";
+            this.linkMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMail_LinkClicked);
+            // 
+            // txtOutputLog
+            // 
+            this.txtOutputLog.Location = new System.Drawing.Point(6, 697);
+            this.txtOutputLog.Multiline = true;
+            this.txtOutputLog.Name = "txtOutputLog";
+            this.txtOutputLog.Size = new System.Drawing.Size(1236, 102);
+            this.txtOutputLog.TabIndex = 24;
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 663);
+            this.ClientSize = new System.Drawing.Size(1254, 811);
+            this.Controls.Add(this.txtOutputLog);
+            this.Controls.Add(this.linkMail);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAutoIncrement);
             this.Controls.Add(this.groupBox1);
@@ -297,5 +343,9 @@
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Label lblAutoIncrement;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel linkMail;
+        private System.Windows.Forms.TextBox txtOutputLog;
     }
 }
