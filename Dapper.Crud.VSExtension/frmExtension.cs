@@ -22,8 +22,17 @@ namespace Dapper.Crud.VSExtension
             LoadFiles();
         }
 
+        private static string GetAssemblyLocalPathFrom(Type type)
+        {
+            string codebase = type.Assembly.CodeBase;
+            var uri = new Uri(codebase, UriKind.Absolute);
+            return uri.LocalPath;
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            string installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+
             try
             {
                 Logger.Log("Initializing generation process...");
