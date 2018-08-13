@@ -22,6 +22,13 @@ namespace Dapper.Crud.VSExtension
             LoadFiles();
         }
 
+        private static string GetAssemblyLocalPathFrom(Type type)
+        {
+            string codebase = type.Assembly.CodeBase;
+            var uri = new Uri(codebase, UriKind.Absolute);
+            return uri.LocalPath;
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
@@ -189,6 +196,11 @@ namespace Dapper.Crud.VSExtension
 
         private IList<PropertyInfo> GetPropertyInfos(string model)
         {
+            var installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+            installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
+
+            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn", EnvironmentVariableTarget.Process);
+
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
             List<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
@@ -247,10 +259,6 @@ namespace Dapper.Crud.VSExtension
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
             chkGenerateMethod.Checked = chkClass.Checked;
-        }
-
-        private void btnSendLog_Click(object sender, EventArgs e)
-        {
         }
 
         private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
