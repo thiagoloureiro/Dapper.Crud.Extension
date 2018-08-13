@@ -196,7 +196,7 @@ namespace Dapper.Crud.VSExtension
 
         private IList<PropertyInfo> GetPropertyInfos(string model)
         {
-            var installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+            var installationPath = GetAssemblyLocalPathFrom(typeof(CreateCrudPackage));
             installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
 
             Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn", EnvironmentVariableTarget.Process);
