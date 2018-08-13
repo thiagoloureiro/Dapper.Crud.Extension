@@ -3,7 +3,6 @@ using System;
 using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Text;
-using System.Windows;
 
 namespace Dapper.Crud.VSExtension.Helpers
 {
