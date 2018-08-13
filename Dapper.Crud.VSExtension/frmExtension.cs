@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -29,9 +30,21 @@ namespace Dapper.Crud.VSExtension
             return uri.LocalPath;
         }
 
+        //private void UnzipFile(string path)
+        //{
+        //    var roslynpath = path + "roslyn.zip";
+
+        //    ZipFile.ExtractToDirectory(roslynpath, path);
+        //}
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            string installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+            //string installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+
+            //installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
+
+            //if (!Directory.Exists(installationPath + "roslyn"))
+            //    UnzipFile(installationPath);
 
             try
             {
@@ -198,6 +211,11 @@ namespace Dapper.Crud.VSExtension
 
         private IList<PropertyInfo> GetPropertyInfos(string model)
         {
+            var installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
+            installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
+
+            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn", EnvironmentVariableTarget.Process);
+
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
             List<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());

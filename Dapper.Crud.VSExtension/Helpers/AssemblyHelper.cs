@@ -11,14 +11,10 @@ namespace Dapper.Crud.VSExtension.Helpers
         private static Assembly BuildAssembly(string code)
         {
             //Set hardcoded environment variable to set the path to the library
-
-            //MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
-            //Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", System.IO.Directory.GetCurrentDirectory() + "\\roslyn", EnvironmentVariableTarget.Process);
-            //  var compiler = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider();
+            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", System.IO.Directory.GetCurrentDirectory() + "\\roslyn", EnvironmentVariableTarget.Process);
+            var compiler = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider();
             //Clean up
-            //Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", null, EnvironmentVariableTarget.Process);
-
-            var compiler = new CSharpCodeProvider();
+            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", null, EnvironmentVariableTarget.Process);
 
             var compilerparams = new CompilerParameters
             {
