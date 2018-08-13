@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -30,22 +29,8 @@ namespace Dapper.Crud.VSExtension
             return uri.LocalPath;
         }
 
-        //private void UnzipFile(string path)
-        //{
-        //    var roslynpath = path + "roslyn.zip";
-
-        //    ZipFile.ExtractToDirectory(roslynpath, path);
-        //}
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            //string installationPath = GetAssemblyLocalPathFrom(typeof(DapperGenerator));
-
-            //installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
-
-            //if (!Directory.Exists(installationPath + "roslyn"))
-            //    UnzipFile(installationPath);
-
             try
             {
                 Logger.Log("Initializing generation process...");
@@ -274,10 +259,6 @@ namespace Dapper.Crud.VSExtension
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
             chkGenerateMethod.Checked = chkClass.Checked;
-        }
-
-        private void btnSendLog_Click(object sender, EventArgs e)
-        {
         }
 
         private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
