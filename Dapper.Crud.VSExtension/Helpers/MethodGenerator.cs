@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 
 namespace Dapper.Crud.VSExtension.Helpers
 {
@@ -7,6 +8,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         public static string GenerateSelect(string content, string model, bool generateClass)
         {
             var space = "";
+            model = FixClassName(model);
 
             if (generateClass)
                 space = "    ";
@@ -23,6 +25,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         public static string GenerateInsert(string content, string model, bool generateClass)
         {
             var space = "";
+            model = FixClassName(model);
 
             if (generateClass)
                 space = "    ";
@@ -39,6 +42,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         public static string GenerateUpdate(string content, string model, bool generateClass)
         {
             var space = "";
+            model = FixClassName(model);
 
             if (generateClass)
                 space = "    ";
@@ -55,6 +59,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         public static string GenerateDelete(string content, string model, bool generateClass)
         {
             var space = "";
+            model = FixClassName(model);
 
             if (generateClass)
                 space = "    ";
@@ -66,6 +71,16 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "}");
 
             return sb.ToString();
+        }
+
+        private static string FixClassName(string model)
+        {
+            if (model.Contains("\\"))
+            {
+                var str = model.Split('\\');
+                model = str.Last(); // last item of the array
+            }
+            return model;
         }
     }
 }

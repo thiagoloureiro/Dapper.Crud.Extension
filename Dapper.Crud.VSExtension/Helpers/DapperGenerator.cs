@@ -47,6 +47,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static string Select(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass)
         {
+            model = FixClassName(model);
             var space = "";
 
             if (generateMethod)
@@ -68,6 +69,16 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "return ret;");
 
             return sb.ToString();
+        }
+
+        private static string FixClassName(string model)
+        {
+            if (model.Contains("\\"))
+            {
+                var str = model.Split('\\');
+                model = str.Last(); // last item of the array
+            }
+            return model;
         }
 
         public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement)

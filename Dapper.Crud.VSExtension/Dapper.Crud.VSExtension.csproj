@@ -84,6 +84,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="dll\System.Web.Mvc.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="dll\System.Web.Optimization.dll">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="roslyn\csc.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

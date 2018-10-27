@@ -32,8 +32,8 @@ namespace Dapper.Crud.VSExtension.Helpers
                 compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
                 compilerparams.ReferencedAssemblies.Add("System.Web.dll");
                 compilerparams.ReferencedAssemblies.Add("System.Web.Abstractions.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Web.Mvc.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Web.Optimization.dll");
+                // compilerparams.ReferencedAssemblies.Add("System.Web.Mvc.dll");
+                // compilerparams.ReferencedAssemblies.Add("System.Web.Optimization.dll");
 
                 CompilerResults results =
                     compiler.CompileAssemblyFromSource(compilerparams, code);
