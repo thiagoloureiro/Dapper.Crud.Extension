@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -9,51 +10,60 @@ namespace Dapper.Crud.VSExtension.Helpers
     {
         private static Assembly BuildAssembly(string code)
         {
-            var compiler = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider();
-            //Clean up
-            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", null, EnvironmentVariableTarget.Process);
-
-            var compilerparams = new CompilerParameters
+            using (var compiler = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider())
             {
-                GenerateExecutable = false,
-                GenerateInMemory = true
-            };
+                //Clean up
+                Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", null, EnvironmentVariableTarget.Process);
 
-            compilerparams.ReferencedAssemblies.Add("System.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Core.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Data.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Data.Linq.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Data.DataSetExtensions.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Xml.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
-            compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
-            compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Web.dll");
-            compilerparams.ReferencedAssemblies.Add("System.Web.Abstractions.dll");
-
-            CompilerResults results =
-                compiler.CompileAssemblyFromSource(compilerparams, code);
-            if (results.Errors.HasErrors)
-            {
-                StringBuilder errors = new StringBuilder("Compiler Errors :\r\n");
-                foreach (CompilerError error in results.Errors)
+                var compilerparams = new CompilerParameters
                 {
-                    errors.Append($"Line {error.Line},{error.Column}\t: {error.ErrorText}\n");
+                    GenerateExecutable = false,
+                    GenerateInMemory = true
+                };
+
+                compilerparams.ReferencedAssemblies.Add("System.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Core.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Data.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Data.Linq.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Data.DataSetExtensions.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Xml.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
+                compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
+                compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Web.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Web.Abstractions.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Web.Mvc.dll");
+                compilerparams.ReferencedAssemblies.Add("System.Web.Optimization.dll");
+
+                CompilerResults results =
+                    compiler.CompileAssemblyFromSource(compilerparams, code);
+                if (results.Errors.HasErrors)
+                {
+                    StringBuilder errors = new StringBuilder("Compiler Errors :\r\n");
+                    foreach (CompilerError error in results.Errors)
+                    {
+                        errors.Append($"Line {error.Line},{error.Column}\t: {error.ErrorText}\n");
+                    }
+
+                    compiler.Dispose();
+
+                    throw new Exception(errors.ToString());
                 }
-                throw new Exception(errors.ToString());
-            }
-            else
-            {
-                return results.CompiledAssembly;
+                else
+                {
+                    return results.CompiledAssembly;
+                }
             }
         }
 
         public static object ExecuteCode(string code, string namespacename, string classname, bool isstatic)
         {
             Assembly asm = BuildAssembly(code);
+            classname = FixClassName(classname);
 
             object instance = null;
             Type type = null;
+
             if (isstatic)
             {
                 type = asm.GetType(namespacename + "." + classname);
@@ -64,6 +74,16 @@ namespace Dapper.Crud.VSExtension.Helpers
                 type = instance.GetType();
             }
             return instance;
+        }
+
+        private static string FixClassName(string classname)
+        {
+            if (classname.Contains("\\"))
+            {
+                var str = classname.Split('\\');
+                classname = str.Last(); // last item of the array
+            }
+            return classname;
         }
     }
 }
