@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Dapper.Crud.VSExtension
@@ -20,6 +21,7 @@ namespace Dapper.Crud.VSExtension
             InitializeComponent();
             SetTxtStyles();
             LoadFiles();
+            picLoader.Visible = false;
         }
 
         private static string GetAssemblyLocalPathFrom(Type type)
@@ -29,11 +31,38 @@ namespace Dapper.Crud.VSExtension
             return uri.LocalPath;
         }
 
+        private void SetLoading(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    picLoader.Visible = true;
+                    this.Cursor = Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    picLoader.Visible = false;
+                    this.Cursor = Cursors.Default;
+                });
+            }
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            Thread threadInput = new Thread(GenerateCrud);
+            threadInput.Start();
+        }
+
+        private void GenerateCrud()
         {
             try
             {
                 Logger.Log("Initializing generation process...");
+                SetLoading(true);
 
                 txtOutput.Text = string.Empty;
                 foreach (var item in lstFiles.CheckedItems)
@@ -136,10 +165,12 @@ namespace Dapper.Crud.VSExtension
                             FileHelper.GenerateInterface(output, model, Projectpath);
                     }
                 }
+                SetLoading(false);
                 Logger.Log($"Process Completed Successfully!");
             }
             catch (Exception ex)
             {
+                SetLoading(false);
                 Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
                 txtOutputLog.ForeColor = Color.Red;
                 txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
@@ -200,6 +231,9 @@ namespace Dapper.Crud.VSExtension
             installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
 
             Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn", EnvironmentVariableTarget.Process);
+
+            Assembly.LoadFrom(installationPath + "System.Web.Optimization.dll");
+            Assembly.LoadFrom(installationPath + "System.Web.Mvc.dll");
 
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);

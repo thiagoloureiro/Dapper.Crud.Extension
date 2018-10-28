@@ -52,8 +52,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkMail = new System.Windows.Forms.LinkLabel();
             this.txtOutputLog = new System.Windows.Forms.TextBox();
+            this.picLoader = new System.Windows.Forms.PictureBox();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -289,11 +291,23 @@
             this.txtOutputLog.Size = new System.Drawing.Size(1236, 102);
             this.txtOutputLog.TabIndex = 24;
             // 
+            // picLoader
+            // 
+            this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
+            this.picLoader.Location = new System.Drawing.Point(661, 265);
+            this.picLoader.Name = "picLoader";
+            this.picLoader.Size = new System.Drawing.Size(130, 130);
+            this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLoader.TabIndex = 25;
+            this.picLoader.TabStop = false;
+            this.picLoader.Visible = false;
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 811);
+            this.ClientSize = new System.Drawing.Size(1254, 804);
+            this.Controls.Add(this.picLoader);
             this.Controls.Add(this.txtOutputLog);
             this.Controls.Add(this.linkMail);
             this.Controls.Add(this.label3);
@@ -312,11 +326,12 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 2.3";
+            this.Text = "Dapper Extension 2.5";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,5 +362,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkMail;
         private System.Windows.Forms.TextBox txtOutputLog;
+        private System.Windows.Forms.PictureBox picLoader;
     }
 }

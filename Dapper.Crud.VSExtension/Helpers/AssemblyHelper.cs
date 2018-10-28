@@ -21,22 +21,15 @@ namespace Dapper.Crud.VSExtension.Helpers
                     GenerateInMemory = true
                 };
 
-                compilerparams.ReferencedAssemblies.Add("System.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Core.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Data.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Data.Linq.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Data.DataSetExtensions.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Xml.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Xml.Linq.dll");
-                compilerparams.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
-                compilerparams.ReferencedAssemblies.Add("System.ComponentModel.DataAnnotations.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Web.dll");
-                compilerparams.ReferencedAssemblies.Add("System.Web.Abstractions.dll");
-                // compilerparams.ReferencedAssemblies.Add("System.Web.Mvc.dll");
-                // compilerparams.ReferencedAssemblies.Add("System.Web.Optimization.dll");
+                var assemblies = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .Where(a => !a.IsDynamic)
+                    .Select(a => a.Location);
 
-                CompilerResults results =
-                    compiler.CompileAssemblyFromSource(compilerparams, code);
+                compilerparams.ReferencedAssemblies.AddRange(assemblies.ToArray());
+
+                CompilerResults results = compiler.CompileAssemblyFromSource(compilerparams, code);
+
                 if (results.Errors.HasErrors)
                 {
                     StringBuilder errors = new StringBuilder("Compiler Errors :\r\n");
