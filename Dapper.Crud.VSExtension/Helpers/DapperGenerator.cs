@@ -83,6 +83,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement)
         {
+            model = FixClassName(model);
             var space = "";
 
             if (generateMethod)
@@ -112,6 +113,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static string Update(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement)
         {
+            model = FixClassName(model);
             var space = "";
 
             if (generateMethod)
@@ -146,6 +148,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static string Delete(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass)
         {
+            model = FixClassName(model);
             var space = "";
 
             if (generateMethod)

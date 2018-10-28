@@ -31,6 +31,11 @@ namespace Dapper.Crud.VSExtension.Helpers
             filteredlist.RemoveAll(x => x.Contains("AssemblyInfo.cs"));
             filteredlist.RemoveAll(x => x.Contains("Program.cs"));
             filteredlist.RemoveAll(x => x.Contains("Startup.cs"));
+            filteredlist.RemoveAll(x => x.Contains("Global.asax.cs"));
+            filteredlist.RemoveAll(x => x.Contains("Debug"));
+            filteredlist.RemoveAll(x => x.Contains("App_Start"));
+            filteredlist.RemoveAll(x => x.Contains("Properties"));
+
             return filteredlist;
         }
 
