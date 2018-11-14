@@ -85,6 +85,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Key.snk" />
+    <Content Include="dll\Dapper.Contrib.dll" />
     <Content Include="dll\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -305,6 +306,9 @@
     <Content Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Dapper.Contrib">
+      <Version>1.50.5</Version>
+    </PackageReference>
     <PackageReference Include="IdeaTech.System.Web.Mvc.Extensions">
       <Version>1.0.5</Version>
     </PackageReference>

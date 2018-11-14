@@ -234,6 +234,7 @@ namespace Dapper.Crud.VSExtension
 
             Assembly.LoadFrom(installationPath + "System.Web.Optimization.dll");
             Assembly.LoadFrom(installationPath + "System.Web.Mvc.dll");
+            Assembly.LoadFrom(installationPath + "Dapper.Contrib.dll");
 
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
