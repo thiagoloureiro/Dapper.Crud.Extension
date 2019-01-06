@@ -53,7 +53,7 @@ namespace Dapper.Crud.VSExtension
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            Thread threadInput = new Thread(GenerateCrud);
+            var threadInput = new Thread(GenerateCrud);
             threadInput.Start();
         }
 
@@ -244,7 +244,7 @@ namespace Dapper.Crud.VSExtension
 
             foreach (var prop in props.ToList())
             {
-                if (!types.Contains(prop.PropertyType.Name))
+                if (!types.Contains(prop.PropertyType.Name.ToLower()))
                 {
                     props.Remove(prop);
                 }

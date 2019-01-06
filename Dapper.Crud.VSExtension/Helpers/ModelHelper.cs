@@ -39,14 +39,13 @@ namespace Dapper.Crud.VSExtension.Helpers
                 "ulong",
                 "ushort",
                 "string",
-                "DateTime",
-                "Int",
-                "Int16",
-                "Int32",
-                "Int64",
-                "String",
-                "Nullable`1",
-                "Guid"
+                "datetime",
+                "int16",
+                "int32",
+                "int64",
+                "string",
+                "nullable`1",
+                "guid"
             };
 
             return lst;

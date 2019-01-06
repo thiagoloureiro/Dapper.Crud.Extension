@@ -60,7 +60,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(12, 12);
+            this.btnLoad.Location = new System.Drawing.Point(12, 6);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 0;
@@ -71,7 +71,7 @@
             // lstFiles
             // 
             this.lstFiles.FormattingEnabled = true;
-            this.lstFiles.Location = new System.Drawing.Point(12, 41);
+            this.lstFiles.Location = new System.Drawing.Point(12, 33);
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.Size = new System.Drawing.Size(251, 244);
             this.lstFiles.TabIndex = 1;
@@ -131,7 +131,7 @@
             // 
             this.btnGenerate.BackColor = System.Drawing.Color.LightGreen;
             this.btnGenerate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerate.Location = new System.Drawing.Point(76, 565);
+            this.btnGenerate.Location = new System.Drawing.Point(75, 533);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(84, 30);
             this.btnGenerate.TabIndex = 8;
@@ -143,9 +143,9 @@
             // 
             this.txtOutput.IndentationGuides = ScintillaNET.IndentView.Real;
             this.txtOutput.Lexer = ScintillaNET.Lexer.Cpp;
-            this.txtOutput.Location = new System.Drawing.Point(269, 41);
+            this.txtOutput.Location = new System.Drawing.Point(269, 33);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(973, 610);
+            this.txtOutput.Size = new System.Drawing.Size(953, 554);
             this.txtOutput.TabIndex = 9;
             // 
             // chkInterface
@@ -160,7 +160,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1167, 12);
+            this.btnClear.Location = new System.Drawing.Point(1147, 6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -183,7 +183,7 @@
             // 
             this.chkGenerateFiles.AutoSize = true;
             this.chkGenerateFiles.Enabled = false;
-            this.chkGenerateFiles.Location = new System.Drawing.Point(12, 291);
+            this.chkGenerateFiles.Location = new System.Drawing.Point(12, 283);
             this.chkGenerateFiles.Name = "chkGenerateFiles";
             this.chkGenerateFiles.Size = new System.Drawing.Size(94, 17);
             this.chkGenerateFiles.TabIndex = 13;
@@ -208,9 +208,9 @@
             this.gBox.Controls.Add(this.chkInsert);
             this.gBox.Controls.Add(this.chkSelect);
             this.gBox.Controls.Add(this.chkDelete);
-            this.gBox.Location = new System.Drawing.Point(12, 419);
+            this.gBox.Location = new System.Drawing.Point(12, 411);
             this.gBox.Name = "gBox";
-            this.gBox.Size = new System.Drawing.Size(200, 125);
+            this.gBox.Size = new System.Drawing.Size(200, 116);
             this.gBox.TabIndex = 15;
             this.gBox.TabStop = false;
             // 
@@ -229,7 +229,7 @@
             this.groupBox1.Controls.Add(this.chkClass);
             this.groupBox1.Controls.Add(this.chkGenerateMethod);
             this.groupBox1.Controls.Add(this.chkInterface);
-            this.groupBox1.Location = new System.Drawing.Point(12, 313);
+            this.groupBox1.Location = new System.Drawing.Point(12, 305);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 16;
@@ -238,7 +238,7 @@
             // lblAutoIncrement
             // 
             this.lblAutoIncrement.AutoSize = true;
-            this.lblAutoIncrement.Location = new System.Drawing.Point(12, 611);
+            this.lblAutoIncrement.Location = new System.Drawing.Point(12, 566);
             this.lblAutoIncrement.Name = "lblAutoIncrement";
             this.lblAutoIncrement.Size = new System.Drawing.Size(179, 13);
             this.lblAutoIncrement.TabIndex = 17;
@@ -247,7 +247,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 628);
+            this.label1.Location = new System.Drawing.Point(15, 579);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(231, 13);
             this.label1.TabIndex = 18;
@@ -256,7 +256,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 663);
+            this.label2.Location = new System.Drawing.Point(12, 597);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 20;
@@ -265,7 +265,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(872, 663);
+            this.label3.Location = new System.Drawing.Point(852, 590);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 13);
             this.label3.TabIndex = 21;
@@ -275,7 +275,7 @@
             // linkMail
             // 
             this.linkMail.AutoSize = true;
-            this.linkMail.Location = new System.Drawing.Point(1078, 663);
+            this.linkMail.Location = new System.Drawing.Point(1058, 590);
             this.linkMail.Name = "linkMail";
             this.linkMail.Size = new System.Drawing.Size(164, 13);
             this.linkMail.TabIndex = 23;
@@ -285,16 +285,16 @@
             // 
             // txtOutputLog
             // 
-            this.txtOutputLog.Location = new System.Drawing.Point(6, 697);
+            this.txtOutputLog.Location = new System.Drawing.Point(6, 614);
             this.txtOutputLog.Multiline = true;
             this.txtOutputLog.Name = "txtOutputLog";
-            this.txtOutputLog.Size = new System.Drawing.Size(1236, 102);
+            this.txtOutputLog.Size = new System.Drawing.Size(1216, 102);
             this.txtOutputLog.TabIndex = 24;
             // 
             // picLoader
             // 
             this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
-            this.picLoader.Location = new System.Drawing.Point(661, 265);
+            this.picLoader.Location = new System.Drawing.Point(661, 257);
             this.picLoader.Name = "picLoader";
             this.picLoader.Size = new System.Drawing.Size(130, 130);
             this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -306,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 804);
+            this.ClientSize = new System.Drawing.Size(1229, 728);
             this.Controls.Add(this.picLoader);
             this.Controls.Add(this.txtOutputLog);
             this.Controls.Add(this.linkMail);
@@ -326,7 +326,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 2.7";
+            this.Text = "Dapper Extension 2.8";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
