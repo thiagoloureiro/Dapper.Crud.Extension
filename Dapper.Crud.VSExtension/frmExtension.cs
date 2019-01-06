@@ -2,6 +2,7 @@
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -298,7 +299,17 @@ namespace Dapper.Crud.VSExtension
 
         private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("mailto: dappercrudgenerator@gmail.com");
+            Process.Start("mailto: dappercrudgenerator@gmail.com");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://paypal.me/thiagoloureiro");
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://paypal.me/thiagoloureiro");
         }
     }
 }

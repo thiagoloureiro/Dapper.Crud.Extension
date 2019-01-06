@@ -53,9 +53,12 @@
             this.linkMail = new System.Windows.Forms.LinkLabel();
             this.txtOutputLog = new System.Windows.Forms.TextBox();
             this.picLoader = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -288,7 +291,7 @@
             this.txtOutputLog.Location = new System.Drawing.Point(6, 614);
             this.txtOutputLog.Multiline = true;
             this.txtOutputLog.Name = "txtOutputLog";
-            this.txtOutputLog.Size = new System.Drawing.Size(1216, 102);
+            this.txtOutputLog.Size = new System.Drawing.Size(1118, 102);
             this.txtOutputLog.TabIndex = 24;
             // 
             // picLoader
@@ -302,11 +305,37 @@
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1133, 685);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(89, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkLabel1.Location = new System.Drawing.Point(1130, 669);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(42, 13);
+            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Donate";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 728);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picLoader);
             this.Controls.Add(this.txtOutputLog);
             this.Controls.Add(this.linkMail);
@@ -332,6 +361,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,5 +393,7 @@
         private System.Windows.Forms.LinkLabel linkMail;
         private System.Windows.Forms.TextBox txtOutputLog;
         private System.Windows.Forms.PictureBox picLoader;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
