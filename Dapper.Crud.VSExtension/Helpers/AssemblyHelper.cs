@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace Dapper.Crud.VSExtension.Helpers
 {
@@ -27,6 +28,8 @@ namespace Dapper.Crud.VSExtension.Helpers
                     .Select(a => a.Location);
 
                 compilerparams.ReferencedAssemblies.AddRange(assemblies.ToArray());
+
+                compilerparams.ReferencedAssemblies.Add(@"C:\Users\thiago.azevedo\AppData\Local\Microsoft\VisualStudio\15.0_b7d486ffExp\Extensions\Thiago Loureiro\Dapper Crud Generator\2.8\EnumLibrary.dll");
 
                 CompilerResults results = compiler.CompileAssemblyFromSource(compilerparams, code);
 

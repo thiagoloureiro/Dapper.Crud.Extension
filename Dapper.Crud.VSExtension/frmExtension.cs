@@ -17,6 +17,8 @@ namespace Dapper.Crud.VSExtension
         public string Projectpath;
         public string RawContent;
 
+        private IDictionary<string, AssemblyName> _lstAssemblyRef = new Dictionary<string, AssemblyName>();
+
         public frmExtension()
         {
             InitializeComponent();
@@ -54,6 +56,11 @@ namespace Dapper.Crud.VSExtension
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+#if DEBUG
+            GenerateCrud();
+            return;
+#endif
+
             var threadInput = new Thread(GenerateCrud);
             threadInput.Start();
         }
@@ -176,6 +183,12 @@ namespace Dapper.Crud.VSExtension
                 txtOutputLog.ForeColor = Color.Red;
                 txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
             }
+            finally
+            {
+                GC.Collect(); // collects all unused memory
+                GC.WaitForPendingFinalizers(); // wait until GC has finished its work
+                GC.Collect();
+            }
         }
 
         private void SetTxtStyles()
@@ -206,12 +219,41 @@ namespace Dapper.Crud.VSExtension
             LoadFiles();
         }
 
+        private void GetProjectReferences(EnvDTE.Project project)
+        {
+            var vsproject = project.Object as VSLangProj.VSProject;
+            // note: you could also try casting to VsWebSite.VSWebSite
+
+            foreach (VSLangProj.Reference reference in vsproject.References)
+            {
+                if (reference.SourceProject != null)
+                {
+                    // This is an assembly reference
+                    var fullName = GetFullName(reference);
+                    var assemblyName = new AssemblyName(fullName);
+                    var path = reference.Path;
+
+                    _lstAssemblyRef.Add(path, assemblyName);
+                }
+            }
+        }
+
+        public static string GetFullName(VSLangProj.Reference reference)
+        {
+            return string.Format("{0}, Version ={1}.{2}.{3}.{4}, Culture={5}, PublicKeyToken={6}",
+                            reference.Name,
+                            reference.MajorVersion, reference.MinorVersion, reference.BuildNumber, reference.RevisionNumber,
+             reference.Culture.Or("neutral"),
+             reference.PublicKeyToken.Or("null"));
+        }
+
         private void LoadFiles()
         {
             lstFiles.Items.Clear();
             var project = ProjectHelpers.GetActiveProject();
 
             Projectpath = project.GetFullPath();
+            GetProjectReferences(project);
 
             var files = Directory.GetFiles(Projectpath, "*.cs", SearchOption.AllDirectories).ToList();
             var filteredList = FileHelper.FilterFileList(files);
@@ -236,6 +278,15 @@ namespace Dapper.Crud.VSExtension
             Assembly.LoadFrom(installationPath + "System.Web.Optimization.dll");
             Assembly.LoadFrom(installationPath + "System.Web.Mvc.dll");
             Assembly.LoadFrom(installationPath + "Dapper.Contrib.dll");
+
+            if (_lstAssemblyRef.Count > 0)
+            {
+                foreach (var item in _lstAssemblyRef)
+                {
+                    var fileName = installationPath + item.Value.Name + ".dll";
+                    File.Copy(item.Key, fileName, true);
+                }
+            }
 
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
