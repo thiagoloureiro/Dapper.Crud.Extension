@@ -19,7 +19,7 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.Select("User", props, false, false);
 
             // Assert
-            Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
+            Assert.Contains("SELECT Id, Name, Email FROM User", ret);
             Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
         }
 
@@ -49,7 +49,7 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.SelectJoin(models, lstProperties, false, false);
 
             // Assert
-            Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
+            Assert.Contains("SELECT Id, Name, Email FROM User", ret);
             Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
         }
     }

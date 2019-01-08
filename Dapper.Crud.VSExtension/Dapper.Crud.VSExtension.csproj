@@ -102,6 +102,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="Resources\Spinner.gif" />
+    <None Include="Resources\aa.PNG" />
     <Content Include="roslyn\csc.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

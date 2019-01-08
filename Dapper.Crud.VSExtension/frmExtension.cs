@@ -37,18 +37,18 @@ namespace Dapper.Crud.VSExtension
             if (displayLoader)
             {
                 this.Invoke((MethodInvoker)delegate
-                {
-                    picLoader.Visible = true;
-                    this.Cursor = Cursors.WaitCursor;
-                });
+               {
+                   picLoader.Visible = true;
+                   this.Cursor = Cursors.WaitCursor;
+               });
             }
             else
             {
                 this.Invoke((MethodInvoker)delegate
-                {
-                    picLoader.Visible = false;
-                    this.Cursor = Cursors.Default;
-                });
+               {
+                   picLoader.Visible = false;
+                   this.Cursor = Cursors.Default;
+               });
             }
         }
 
@@ -86,17 +86,20 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
-                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked,
+                                    chkAutoIncrement.Checked),
                                 model, chkClass.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
-                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
+                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked,
+                                    chkClass.Checked, chkAutoIncrement.Checked),
                                 model, chkClass.Checked);
 
                         if (chkDelete.Checked)
                             output += MethodGenerator.GenerateDelete(
-                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked,
+                                    chkClass.Checked),
                                 model, chkClass.Checked);
 
                         output += "}";
@@ -112,33 +115,45 @@ namespace Dapper.Crud.VSExtension
                         {
                             if (chkSelect.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateSelect(
+                                        DapperGenerator.Select(model, properties, chkGenerateMethod.Checked,
+                                            chkClass.Checked), model, chkClass.Checked);
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateInsert(
+                                        DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked,
+                                            chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateUpdate(
+                                        DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked,
+                                            chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateDelete(
+                                        DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked,
+                                            chkClass.Checked), model, chkClass.Checked);
                         }
                         else
                         {
                             if (chkSelect.Checked)
-                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked,
+                                    chkClass.Checked);
 
                             if (chkInsert.Checked)
-                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked,
+                                    chkClass.Checked, chkAutoIncrement.Checked);
 
                             if (chkUpdate.Checked)
-                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate,
+                                    chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
 
                             if (chkDelete.Checked)
-                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete,
+                                    chkGenerateMethod.Checked, chkClass.Checked);
                         }
                     }
 
@@ -166,15 +181,18 @@ namespace Dapper.Crud.VSExtension
                             FileHelper.GenerateInterface(output, model, Projectpath);
                     }
                 }
+
                 SetLoading(false);
                 Logger.Log($"Process Completed Successfully!");
             }
             catch (Exception ex)
             {
                 SetLoading(false);
-                Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
+                Logger.Log(
+                    $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
                 txtOutputLog.ForeColor = Color.Red;
-                txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
+                txtOutputLog.Text =
+                    $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
             }
         }
 
@@ -231,7 +249,8 @@ namespace Dapper.Crud.VSExtension
             var installationPath = GetAssemblyLocalPathFrom(typeof(CreateCrudPackage));
             installationPath = installationPath.Replace("Dapper.Crud.VSExtension.dll", "");
 
-            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn", EnvironmentVariableTarget.Process);
+            Environment.SetEnvironmentVariable("ROSLYN_COMPILER_LOCATION", installationPath + "\\roslyn",
+                EnvironmentVariableTarget.Process);
 
             Assembly.LoadFrom(installationPath + "System.Web.Optimization.dll");
             Assembly.LoadFrom(installationPath + "System.Web.Mvc.dll");
@@ -268,6 +287,7 @@ namespace Dapper.Crud.VSExtension
                     break;
                 }
             }
+
             foreach (var p in prop)
             {
                 if (p.Name != "Id")

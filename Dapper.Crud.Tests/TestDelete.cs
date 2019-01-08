@@ -19,7 +19,7 @@ namespace Dapper.Crud.Tests
             var ret = DapperGenerator.Delete("User", props, false, false);
 
             // Assert
-            Assert.Contains("DELETE FROM [User] WHERE Id = @Id", ret);
+            Assert.Contains("DELETE FROM User WHERE Id = @Id", ret);
             Assert.Contains("db.Execute(sql, new { user.Id }, commandType: CommandType.Text);", ret);
         }
     }

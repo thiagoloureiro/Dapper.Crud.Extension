@@ -30,7 +30,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + $"List<{models[0]}> ret;");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"SELECT {prop} FROM [{models[0]}] D0");
+            sb.AppendLine(space + $"    const string sql = @\"SELECT {prop} FROM {models[0]} D0");
 
             for (int i = 1; i < arrProp.Length; i++)
             {
@@ -62,7 +62,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + $"List<{model}> ret;");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"SELECT {prop} FROM [{model}]\";");
+            sb.AppendLine(space + $"    const string sql = @\"SELECT {prop} FROM {model}\";");
             sb.AppendLine("");
             sb.AppendLine(space + $"    ret = db.Query<{model}>(sql, commandType: CommandType.Text).ToList();");
             sb.AppendLine(space + "}");
@@ -103,7 +103,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "// Insert");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt})\";");
+            sb.AppendLine(space + $"    const string sql = @\"INSERT INTO {model} ({prop}) VALUES ({propAt})\";");
             sb.AppendLine("");
             sb.AppendLine(space + $"    db.Execute(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
             sb.AppendLine(space + "}");
@@ -133,7 +133,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "// Update");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"UPDATE [{model}] SET {GenerateUpdateValues(properties)} WHERE {propId.Name} = @{propId.Name}\";");
+            sb.AppendLine(space + $"    const string sql = @\"UPDATE {model} SET {GenerateUpdateValues(properties)} WHERE {propId.Name} = @{propId.Name}\";");
             sb.AppendLine("");
 
             if (autoIncrement)
@@ -161,7 +161,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "// Delete");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    const string sql = @\"DELETE FROM [{model}] WHERE {properties[0].Name} = @{properties[0].Name}\";");
+            sb.AppendLine(space + $"    const string sql = @\"DELETE FROM {model} WHERE {properties[0].Name} = @{properties[0].Name}\";");
             sb.AppendLine("");
             sb.AppendLine(space + $"    db.Execute(sql, new {{ {model.ToLower()}.{properties[0].Name} }}, commandType: CommandType.Text);");
             sb.AppendLine(space + "}");
