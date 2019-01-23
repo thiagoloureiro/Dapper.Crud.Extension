@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="d7261d0b-5f95-456b-9b6a-b127d9afc8e4" Version="2.8" Language="en-US" Publisher="Thiago Loureiro" />
+        <Identity Id="d7261d0b-5f95-456b-9b6a-b127d9afc8e4" Version="2.8.1" Language="en-US" Publisher="Thiago Loureiro" />
         <DisplayName>Dapper Crud Generator</DisplayName>
         <Description xml:space="preserve">Generate CRUD easily with Dapper from your existing Models</Description>
         <MoreInfo>https://github.com/thiagoloureiro/Dapper.Crud.Extension</MoreInfo>
