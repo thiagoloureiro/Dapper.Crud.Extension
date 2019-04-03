@@ -355,7 +355,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 3.0";
+            this.Text = "Dapper Extension 3.0.1";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
