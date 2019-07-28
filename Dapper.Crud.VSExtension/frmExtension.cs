@@ -55,12 +55,11 @@ namespace Dapper.Crud.VSExtension
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            //   var threadInput = new Thread(GenerateCrud);
-            //  threadInput.Start();
-            GenerateCrud();
+            var threadInput = new Thread(GenerateCrud);
+            threadInput.Start();
         }
 
-        private async Task GenerateCrud()
+        private void GenerateCrud()
         {
             try
             {
