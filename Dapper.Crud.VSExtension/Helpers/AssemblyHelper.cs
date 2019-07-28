@@ -26,7 +26,10 @@ namespace Dapper.Crud.VSExtension.Helpers
                     .Where(a => !a.IsDynamic)
                     .Select(a => a.Location);
 
-                compilerparams.ReferencedAssemblies.AddRange(assemblies.ToArray());
+                var asmList = assemblies.ToList();
+                asmList.RemoveAll(x => x.Contains(".winmd"));
+
+                compilerparams.ReferencedAssemblies.AddRange(asmList.ToArray());
 
                 CompilerResults results = compiler.CompileAssemblyFromSource(compilerparams, code);
 

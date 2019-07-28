@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dapper.Crud.VSExtension
@@ -54,11 +55,12 @@ namespace Dapper.Crud.VSExtension
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            var threadInput = new Thread(GenerateCrud);
-            threadInput.Start();
+            //   var threadInput = new Thread(GenerateCrud);
+            //  threadInput.Start();
+            GenerateCrud();
         }
 
-        private void GenerateCrud()
+        private async Task GenerateCrud()
         {
             try
             {
