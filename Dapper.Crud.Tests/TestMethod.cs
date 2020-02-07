@@ -16,7 +16,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Insert("User", props, false, false, false);
+            var content = DapperGenerator.Insert("User", props, false, false, false, false);
 
             // Act
             var ret = MethodGenerator.GenerateInsert(content, model, false, false);
@@ -32,7 +32,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Insert("User", props, false, false, false);
+            var content = DapperGenerator.Insert("User", props, false, false, false, true);
 
             // Act
             var ret = MethodGenerator.GenerateInsert(content, model, false, true);
@@ -48,7 +48,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Select("User", props, false, false);
+            var content = DapperGenerator.Select("User", props, false, false, false);
 
             // Act
             var ret = MethodGenerator.GenerateSelect(content, model, false, false);
@@ -64,7 +64,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Select("User", props, false, false);
+            var content = DapperGenerator.Select("User", props, false, false, true);
 
             // Act
             var ret = MethodGenerator.GenerateSelect(content, model, false, true);
@@ -80,7 +80,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Update("User", props, false, false, false);
+            var content = DapperGenerator.Update("User", props, false, false, false, false);
 
             // Act
             var ret = MethodGenerator.GenerateUpdate(content, model, false, false);
@@ -96,7 +96,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Update("User", props, false, false, false);
+            var content = DapperGenerator.Update("User", props, false, false, false, true);
 
             // Act
             var ret = MethodGenerator.GenerateUpdate(content, model, false, true);
@@ -112,7 +112,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Delete("User", props, false, false);
+            var content = DapperGenerator.Delete("User", props, false, false, false);
 
             // Act
             var ret = MethodGenerator.GenerateDelete(content, model, false, false);
@@ -128,7 +128,7 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Delete("User", props, false, false);
+            var content = DapperGenerator.Delete("User", props, false, false, true);
 
             // Act
             var ret = MethodGenerator.GenerateDelete(content, model, false, true);

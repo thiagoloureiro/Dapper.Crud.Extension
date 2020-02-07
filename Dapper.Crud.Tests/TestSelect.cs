@@ -16,11 +16,26 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Select("User", props, false, false);
+            var ret = DapperGenerator.Select("User", props, false, false, false);
 
             // Assert
             Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
-            Assert.Contains("ret = db.Query<User>(sql, commandType: CommandType.Text).ToList();", ret);
+            Assert.Contains("return db.Query<User>(sql, commandType: CommandType.Text);", ret);
+        }
+
+        [Fact]
+        public void GenerateSelectAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+
+            // Act
+            var ret = DapperGenerator.Select("User", props, false, false, true);
+
+            // Assert
+            Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
+            Assert.Contains("return await db.QueryAsync<User>(sql, commandType: CommandType.Text);", ret);
         }
 
         [Fact]

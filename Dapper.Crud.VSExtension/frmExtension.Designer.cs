@@ -46,6 +46,7 @@
             this.gBox = new System.Windows.Forms.GroupBox();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAsync = new System.Windows.Forms.CheckBox();
             this.lblAutoIncrement = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.txtOutputLog = new System.Windows.Forms.TextBox();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.chkAsync = new System.Windows.Forms.CheckBox();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -237,6 +237,16 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
+            // chkAsync
+            // 
+            this.chkAsync.AutoSize = true;
+            this.chkAsync.Location = new System.Drawing.Point(6, 88);
+            this.chkAsync.Name = "chkAsync";
+            this.chkAsync.Size = new System.Drawing.Size(55, 17);
+            this.chkAsync.TabIndex = 13;
+            this.chkAsync.Text = "Async";
+            this.chkAsync.UseVisualStyleBackColor = true;
+            // 
             // lblAutoIncrement
             // 
             this.lblAutoIncrement.AutoSize = true;
@@ -305,16 +315,6 @@
             this.linkLabel1.Text = "Buy me a coffee <3";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // chkAsync
-            // 
-            this.chkAsync.AutoSize = true;
-            this.chkAsync.Location = new System.Drawing.Point(6, 88);
-            this.chkAsync.Name = "chkAsync";
-            this.chkAsync.Size = new System.Drawing.Size(55, 17);
-            this.chkAsync.TabIndex = 13;
-            this.chkAsync.Text = "Async";
-            this.chkAsync.UseVisualStyleBackColor = true;
-            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,7 +339,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 3.0.3";
+            this.Text = "Dapper Extension 3.0.4";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);

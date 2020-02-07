@@ -308,7 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper.Contrib">
-      <Version>1.60.1</Version>
+      <Version>2.0.30</Version>
     </PackageReference>
     <PackageReference Include="IdeaTech.System.Web.Mvc.Extensions">
       <Version>1.0.7</Version>

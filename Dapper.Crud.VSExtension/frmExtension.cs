@@ -82,22 +82,22 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkSelect.Checked)
                             output += MethodGenerator.GenerateSelect(
-                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked),
                                 model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
-                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked),
                                 model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
-                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
+                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked),
                                 model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkDelete.Checked)
                             output += MethodGenerator.GenerateDelete(
-                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked),
+                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked),
                                 model, chkClass.Checked, chkAsync.Checked);
 
                         output += "}";
@@ -113,33 +113,33 @@ namespace Dapper.Crud.VSExtension
                         {
                             if (chkSelect.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
                         }
                         else
                         {
                             if (chkSelect.Checked)
-                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
-                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
 
                             if (chkUpdate.Checked)
-                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
 
                             if (chkDelete.Checked)
-                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked);
                         }
                     }
 
