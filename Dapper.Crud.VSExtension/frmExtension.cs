@@ -17,6 +17,7 @@ namespace Dapper.Crud.VSExtension
     {
         public string Projectpath;
         public string RawContent;
+        public bool _darkMode = false;
 
         public frmExtension()
         {
@@ -186,20 +187,54 @@ namespace Dapper.Crud.VSExtension
             txtOutput.Styles[Style.Default].Size = 10;
             txtOutput.StyleClearAll();
 
-            // Configure the CPP (C#) lexer styles
-            txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Silver;
-            txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
-            txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
-            txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
-            txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
-            txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
-            txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
-            txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+            if (_darkMode)
+            {
+                // Configure the CPP (C#) lexer styles
+                txtOutput.Styles[Style.Cpp.Default].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
+                txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
+                txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
+                txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+
+                txtOutput.Styles[Style.Cpp.Comment].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.CommentLine].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Number].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Word].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Word2].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.String].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Character].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Verbatim].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Operator].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Preprocessor].BackColor = Color.FromArgb(41, 41, 41);
+            }
+            else
+            {
+                // Configure the CPP (C#) lexer styles
+                txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Silver;
+                txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
+                txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
+                txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
+                txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -298,19 +333,52 @@ namespace Dapper.Crud.VSExtension
             chkGenerateMethod.Checked = chkClass.Checked;
         }
 
-        private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("mailto: dappercrudgenerator@gmail.com");
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://paypal.me/thiagoloureiro");
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://www.buymeacoffee.com/Obk4RIZ");
+        }
+
+        private void btnChangeMode_Click(object sender, EventArgs e)
+        {
+            SetTxtStyles();
+            if (!_darkMode)
+            {
+                this.BackColor = SystemColors.Control;
+
+                foreach (Control child in this.Controls)
+                {
+                    child.ForeColor = Color.Black;
+                    txtOutput.BackColor = SystemColors.Control;
+                    txtOutputLog.BackColor = SystemColors.Control;
+                    lstFiles.BackColor = SystemColors.Control;
+                }
+
+                foreach (var button in this.Controls.OfType<Button>())
+                {
+                    button.BackColor = SystemColors.Control;
+                }
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(41, 41, 41);
+
+                foreach (Control child in this.Controls)
+                {
+                    child.ForeColor = Color.WhiteSmoke;
+                    txtOutputLog.BackColor = Color.FromArgb(41, 41, 41);
+                    lstFiles.BackColor = Color.FromArgb(41, 41, 41);
+                }
+
+                foreach (var button in this.Controls.OfType<Button>())
+                {
+                    button.BackColor = Color.FromArgb(100, 100, 100);
+                    button.FlatStyle = FlatStyle.Flat;
+
+                    button.FlatAppearance.BorderColor = Color.DarkGray;
+                }
+            }
+            btnChangeMode.Text = _darkMode ? "White mode" : "Dark mode";
+            _darkMode = !_darkMode;
         }
     }
 }

@@ -54,6 +54,7 @@
             this.txtOutputLog = new System.Windows.Forms.TextBox();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.btnChangeMode = new System.Windows.Forms.Button();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -315,11 +316,23 @@
             this.linkLabel1.Text = "Buy me a coffee <3";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // btnChangeMode
+            // 
+            this.btnChangeMode.Location = new System.Drawing.Point(1154, 644);
+            this.btnChangeMode.Name = "btnChangeMode";
+            this.btnChangeMode.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeMode.TabIndex = 29;
+            this.btnChangeMode.Text = "Dark Mode :D";
+            this.btnChangeMode.UseVisualStyleBackColor = true;
+            this.btnChangeMode.Visible = false;
+            this.btnChangeMode.Click += new System.EventHandler(this.btnChangeMode_Click);
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 732);
+            this.Controls.Add(this.btnChangeMode);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.picLoader);
             this.Controls.Add(this.txtOutputLog);
@@ -377,5 +390,6 @@
         private System.Windows.Forms.PictureBox picLoader;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.CheckBox chkAsync;
+        private System.Windows.Forms.Button btnChangeMode;
     }
 }
