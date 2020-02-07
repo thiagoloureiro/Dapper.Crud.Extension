@@ -83,22 +83,22 @@ namespace Dapper.Crud.VSExtension
                         if (chkSelect.Checked)
                             output += MethodGenerator.GenerateSelect(
                                 DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
-                                model, chkClass.Checked);
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
                                 DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
-                                model, chkClass.Checked);
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
                                 DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
-                                model, chkClass.Checked);
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkDelete.Checked)
                             output += MethodGenerator.GenerateDelete(
                                 DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked),
-                                model, chkClass.Checked);
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         output += "}";
 
@@ -113,19 +113,19 @@ namespace Dapper.Crud.VSExtension
                         {
                             if (chkSelect.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked, chkAsync.Checked);
                         }
                         else
                         {
@@ -148,16 +148,16 @@ namespace Dapper.Crud.VSExtension
                         output = InterfaceGenerator.GenerateInterfaceBody(model);
 
                         if (chkSelect.Checked)
-                            output += InterfaceGenerator.GenerateSelect(model);
+                            output += InterfaceGenerator.GenerateSelect(model, chkAsync.Checked);
 
                         if (chkInsert.Checked)
-                            output += InterfaceGenerator.GenerateInsert(model);
+                            output += InterfaceGenerator.GenerateInsert(model, chkAsync.Checked);
 
                         if (chkUpdate.Checked)
-                            output += InterfaceGenerator.GenerateUpdate(model);
+                            output += InterfaceGenerator.GenerateUpdate(model, chkAsync.Checked);
 
                         if (chkDelete.Checked)
-                            output += InterfaceGenerator.GenerateDelete(model);
+                            output += InterfaceGenerator.GenerateDelete(model, chkAsync.Checked);
 
                         output += "}";
 
@@ -310,7 +310,7 @@ namespace Dapper.Crud.VSExtension
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://paypal.me/thiagoloureiro");
+            Process.Start("https://www.buymeacoffee.com/Obk4RIZ");
         }
     }
 }

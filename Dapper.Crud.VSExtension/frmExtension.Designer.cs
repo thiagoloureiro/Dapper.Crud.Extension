@@ -50,23 +50,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.linkMail = new System.Windows.Forms.LinkLabel();
             this.txtOutputLog = new System.Windows.Forms.TextBox();
             this.picLoader = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.chkAsync = new System.Windows.Forms.CheckBox();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(32, 14);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnLoad.Location = new System.Drawing.Point(12, 6);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(200, 55);
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 0;
             this.btnLoad.Text = "Refresh";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -75,20 +72,18 @@
             // lstFiles
             // 
             this.lstFiles.FormattingEnabled = true;
-            this.lstFiles.Location = new System.Drawing.Point(32, 79);
-            this.lstFiles.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.lstFiles.Location = new System.Drawing.Point(12, 33);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(663, 564);
+            this.lstFiles.Size = new System.Drawing.Size(251, 229);
             this.lstFiles.TabIndex = 1;
             this.lstFiles.ThreeDCheckBoxes = true;
             // 
             // chkGenerateMethod
             // 
             this.chkGenerateMethod.AutoSize = true;
-            this.chkGenerateMethod.Location = new System.Drawing.Point(16, 100);
-            this.chkGenerateMethod.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkGenerateMethod.Location = new System.Drawing.Point(6, 42);
             this.chkGenerateMethod.Name = "chkGenerateMethod";
-            this.chkGenerateMethod.Size = new System.Drawing.Size(274, 36);
+            this.chkGenerateMethod.Size = new System.Drawing.Size(109, 17);
             this.chkGenerateMethod.TabIndex = 2;
             this.chkGenerateMethod.Text = "Generate Method";
             this.chkGenerateMethod.UseVisualStyleBackColor = true;
@@ -96,10 +91,9 @@
             // chkInsert
             // 
             this.chkInsert.AutoSize = true;
-            this.chkInsert.Location = new System.Drawing.Point(16, 100);
-            this.chkInsert.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkInsert.Location = new System.Drawing.Point(6, 42);
             this.chkInsert.Name = "chkInsert";
-            this.chkInsert.Size = new System.Drawing.Size(155, 36);
+            this.chkInsert.Size = new System.Drawing.Size(66, 17);
             this.chkInsert.TabIndex = 3;
             this.chkInsert.Text = "INSERT";
             this.chkInsert.UseVisualStyleBackColor = true;
@@ -107,10 +101,9 @@
             // chkSelect
             // 
             this.chkSelect.AutoSize = true;
-            this.chkSelect.Location = new System.Drawing.Point(16, 45);
-            this.chkSelect.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkSelect.Location = new System.Drawing.Point(6, 19);
             this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Size = new System.Drawing.Size(163, 36);
+            this.chkSelect.Size = new System.Drawing.Size(67, 17);
             this.chkSelect.TabIndex = 4;
             this.chkSelect.Text = "SELECT";
             this.chkSelect.UseVisualStyleBackColor = true;
@@ -118,10 +111,9 @@
             // chkDelete
             // 
             this.chkDelete.AutoSize = true;
-            this.chkDelete.Location = new System.Drawing.Point(16, 210);
-            this.chkDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkDelete.Location = new System.Drawing.Point(6, 88);
             this.chkDelete.Name = "chkDelete";
-            this.chkDelete.Size = new System.Drawing.Size(163, 36);
+            this.chkDelete.Size = new System.Drawing.Size(68, 17);
             this.chkDelete.TabIndex = 5;
             this.chkDelete.Text = "DELETE";
             this.chkDelete.UseVisualStyleBackColor = true;
@@ -129,10 +121,9 @@
             // chkUpdate
             // 
             this.chkUpdate.AutoSize = true;
-            this.chkUpdate.Location = new System.Drawing.Point(16, 155);
-            this.chkUpdate.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkUpdate.Location = new System.Drawing.Point(6, 65);
             this.chkUpdate.Name = "chkUpdate";
-            this.chkUpdate.Size = new System.Drawing.Size(167, 36);
+            this.chkUpdate.Size = new System.Drawing.Size(70, 17);
             this.chkUpdate.TabIndex = 6;
             this.chkUpdate.Text = "UPDATE";
             this.chkUpdate.UseVisualStyleBackColor = true;
@@ -141,10 +132,9 @@
             // 
             this.btnGenerate.BackColor = System.Drawing.Color.LightGreen;
             this.btnGenerate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerate.Location = new System.Drawing.Point(200, 1271);
-            this.btnGenerate.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnGenerate.Location = new System.Drawing.Point(75, 533);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(224, 72);
+            this.btnGenerate.Size = new System.Drawing.Size(84, 30);
             this.btnGenerate.TabIndex = 8;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = false;
@@ -154,29 +144,26 @@
             // 
             this.txtOutput.IndentationGuides = ScintillaNET.IndentView.Real;
             this.txtOutput.Lexer = ScintillaNET.Lexer.Cpp;
-            this.txtOutput.Location = new System.Drawing.Point(717, 79);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txtOutput.Location = new System.Drawing.Point(269, 33);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(2535, 1316);
+            this.txtOutput.Size = new System.Drawing.Size(1000, 554);
             this.txtOutput.TabIndex = 9;
             // 
             // chkInterface
             // 
             this.chkInterface.AutoSize = true;
-            this.chkInterface.Location = new System.Drawing.Point(16, 155);
-            this.chkInterface.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkInterface.Location = new System.Drawing.Point(6, 65);
             this.chkInterface.Name = "chkInterface";
-            this.chkInterface.Size = new System.Drawing.Size(289, 36);
+            this.chkInterface.Size = new System.Drawing.Size(115, 17);
             this.chkInterface.TabIndex = 10;
             this.chkInterface.Text = "Generate Interface";
             this.chkInterface.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3059, 14);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnClear.Location = new System.Drawing.Point(1194, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(200, 55);
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "Clear Text";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -185,10 +172,9 @@
             // chkClass
             // 
             this.chkClass.AutoSize = true;
-            this.chkClass.Location = new System.Drawing.Point(16, 45);
-            this.chkClass.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkClass.Location = new System.Drawing.Point(6, 19);
             this.chkClass.Name = "chkClass";
-            this.chkClass.Size = new System.Drawing.Size(250, 36);
+            this.chkClass.Size = new System.Drawing.Size(98, 17);
             this.chkClass.TabIndex = 12;
             this.chkClass.Text = "Generate Class";
             this.chkClass.UseVisualStyleBackColor = true;
@@ -198,10 +184,9 @@
             // 
             this.chkGenerateFiles.AutoSize = true;
             this.chkGenerateFiles.Enabled = false;
-            this.chkGenerateFiles.Location = new System.Drawing.Point(32, 675);
-            this.chkGenerateFiles.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkGenerateFiles.Location = new System.Drawing.Point(12, 268);
             this.chkGenerateFiles.Name = "chkGenerateFiles";
-            this.chkGenerateFiles.Size = new System.Drawing.Size(240, 36);
+            this.chkGenerateFiles.Size = new System.Drawing.Size(94, 17);
             this.chkGenerateFiles.TabIndex = 13;
             this.chkGenerateFiles.Text = "Generate Files";
             this.chkGenerateFiles.UseVisualStyleBackColor = true;
@@ -209,10 +194,9 @@
             // chkAutoIncrement
             // 
             this.chkAutoIncrement.AutoSize = true;
-            this.chkAutoIncrement.Location = new System.Drawing.Point(208, 100);
-            this.chkAutoIncrement.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.chkAutoIncrement.Location = new System.Drawing.Point(78, 42);
             this.chkAutoIncrement.Name = "chkAutoIncrement";
-            this.chkAutoIncrement.Size = new System.Drawing.Size(253, 36);
+            this.chkAutoIncrement.Size = new System.Drawing.Size(101, 17);
             this.chkAutoIncrement.TabIndex = 14;
             this.chkAutoIncrement.Text = "AutoIncrement?";
             this.chkAutoIncrement.UseVisualStyleBackColor = true;
@@ -225,20 +209,17 @@
             this.gBox.Controls.Add(this.chkInsert);
             this.gBox.Controls.Add(this.chkSelect);
             this.gBox.Controls.Add(this.chkDelete);
-            this.gBox.Location = new System.Drawing.Point(32, 980);
-            this.gBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.gBox.Location = new System.Drawing.Point(12, 411);
             this.gBox.Name = "gBox";
-            this.gBox.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.gBox.Size = new System.Drawing.Size(533, 277);
+            this.gBox.Size = new System.Drawing.Size(200, 116);
             this.gBox.TabIndex = 15;
             this.gBox.TabStop = false;
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(317, 0);
-            this.btnSelectAll.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSelectAll.Location = new System.Drawing.Point(119, 0);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(200, 55);
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
             this.btnSelectAll.TabIndex = 17;
             this.btnSelectAll.Text = "Select All";
             this.btnSelectAll.UseVisualStyleBackColor = true;
@@ -246,127 +227,102 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAsync);
             this.groupBox1.Controls.Add(this.chkClass);
             this.groupBox1.Controls.Add(this.chkGenerateMethod);
             this.groupBox1.Controls.Add(this.chkInterface);
-            this.groupBox1.Location = new System.Drawing.Point(32, 727);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupBox1.Location = new System.Drawing.Point(12, 291);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.groupBox1.Size = new System.Drawing.Size(533, 238);
+            this.groupBox1.Size = new System.Drawing.Size(200, 114);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
             // lblAutoIncrement
             // 
             this.lblAutoIncrement.AutoSize = true;
-            this.lblAutoIncrement.Location = new System.Drawing.Point(32, 1350);
-            this.lblAutoIncrement.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblAutoIncrement.Location = new System.Drawing.Point(12, 566);
             this.lblAutoIncrement.Name = "lblAutoIncrement";
-            this.lblAutoIncrement.Size = new System.Drawing.Size(470, 32);
+            this.lblAutoIncrement.Size = new System.Drawing.Size(179, 13);
             this.lblAutoIncrement.TabIndex = 17;
             this.lblAutoIncrement.Text = "When AutoIncrement is selected (Id)";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 1381);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Location = new System.Drawing.Point(15, 579);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(612, 32);
+            this.label1.Size = new System.Drawing.Size(231, 13);
             this.label1.TabIndex = 18;
             this.label1.Text = "fields will not be added to insert/update clauses";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 1424);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Location = new System.Drawing.Point(12, 597);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 32);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 20;
             this.label2.Text = "Output Log";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2272, 1407);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label3.Location = new System.Drawing.Point(1033, 590);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(537, 32);
+            this.label3.Size = new System.Drawing.Size(236, 13);
             this.label3.TabIndex = 21;
-            this.label3.Text = "If you find errors please submit this log to:";
+            this.label3.Text = "If you find errors please open an issue on GitHub";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // linkMail
-            // 
-            this.linkMail.AutoSize = true;
-            this.linkMail.Location = new System.Drawing.Point(2821, 1407);
-            this.linkMail.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.linkMail.Name = "linkMail";
-            this.linkMail.Size = new System.Drawing.Size(439, 32);
-            this.linkMail.TabIndex = 23;
-            this.linkMail.TabStop = true;
-            this.linkMail.Text = "dappercrudgenerator@gmail.com";
-            this.linkMail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkMail_LinkClicked);
             // 
             // txtOutputLog
             // 
-            this.txtOutputLog.Location = new System.Drawing.Point(16, 1464);
-            this.txtOutputLog.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txtOutputLog.Location = new System.Drawing.Point(6, 614);
             this.txtOutputLog.Multiline = true;
             this.txtOutputLog.Name = "txtOutputLog";
-            this.txtOutputLog.Size = new System.Drawing.Size(2975, 238);
+            this.txtOutputLog.Size = new System.Drawing.Size(1118, 102);
             this.txtOutputLog.TabIndex = 24;
             // 
             // picLoader
             // 
             this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
-            this.picLoader.Location = new System.Drawing.Point(1763, 613);
-            this.picLoader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.picLoader.Location = new System.Drawing.Point(661, 257);
             this.picLoader.Name = "picLoader";
-            this.picLoader.Size = new System.Drawing.Size(347, 310);
+            this.picLoader.Size = new System.Drawing.Size(130, 130);
             this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLoader.TabIndex = 25;
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3021, 1633);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(237, 74);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel1.Location = new System.Drawing.Point(3013, 1595);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(1130, 703);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(107, 32);
+            this.linkLabel1.Size = new System.Drawing.Size(99, 13);
             this.linkLabel1.TabIndex = 28;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Donate";
+            this.linkLabel1.Text = "Buy me a coffee <3";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // chkAsync
+            // 
+            this.chkAsync.AutoSize = true;
+            this.chkAsync.Location = new System.Drawing.Point(6, 88);
+            this.chkAsync.Name = "chkAsync";
+            this.chkAsync.Size = new System.Drawing.Size(55, 17);
+            this.chkAsync.TabIndex = 13;
+            this.chkAsync.Text = "Async";
+            this.chkAsync.UseVisualStyleBackColor = true;
             // 
             // frmExtension
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3277, 1736);
+            this.ClientSize = new System.Drawing.Size(1281, 732);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picLoader);
             this.Controls.Add(this.txtOutputLog);
-            this.Controls.Add(this.linkMail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -380,17 +336,15 @@
             this.Controls.Add(this.lstFiles);
             this.Controls.Add(this.btnLoad);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 3.0.2";
+            this.Text = "Dapper Extension 3.0.3";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,10 +373,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.LinkLabel linkMail;
         private System.Windows.Forms.TextBox txtOutputLog;
         private System.Windows.Forms.PictureBox picLoader;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox chkAsync;
     }
 }
