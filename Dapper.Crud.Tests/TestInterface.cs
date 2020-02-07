@@ -22,40 +22,80 @@ namespace Dapper.Crud.Tests
         public void SelectTest()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateSelect(model);
+            var ret = InterfaceGenerator.GenerateSelect(model, false);
 
             // Assert
-            Assert.Contains($"List<User> SelectUser();", ret);
+            Assert.Contains($"IEnumerable<User> SelectUser();", ret);
+        }
+
+        [Fact]
+        public void SelectTestAsync()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateSelect(model, true);
+
+            // Assert
+            Assert.Contains($"Task<IEnumerable<User>> SelectUser();", ret);
         }
 
         [Fact]
         public void InsertTest()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateInsert(model);
+            var ret = InterfaceGenerator.GenerateInsert(model, false);
 
             // Assert
             Assert.Contains($"void InsertUser(User user);", ret);
         }
 
         [Fact]
+        public void InsertTestAsync()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateInsert(model, true);
+
+            // Assert
+            Assert.Contains($"Task InsertUser(User user);", ret);
+        }
+
+        [Fact]
         public void UpdateTest()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateUpdate(model);
+            var ret = InterfaceGenerator.GenerateUpdate(model, false);
 
             // Assert
             Assert.Contains($"void UpdateUser(User user);", ret);
         }
 
         [Fact]
+        public void UpdateTestAsync()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateUpdate(model, true);
+
+            // Assert
+            Assert.Contains($"Task UpdateUser(User user);", ret);
+        }
+
+        [Fact]
         public void DeleteTest()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateDelete(model);
+            var ret = InterfaceGenerator.GenerateDelete(model, false);
 
             // Assert
             Assert.Contains($"void DeleteUser(User user);", ret);
+        }
+
+        [Fact]
+        public void DeleteTestAsync()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateDelete(model, true);
+
+            // Assert
+            Assert.Contains($"Task DeleteUser(User user);", ret);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Dapper.Crud.VSExtension
     {
         public string Projectpath;
         public string RawContent;
+        public bool _darkMode = false;
 
         public frmExtension()
         {
@@ -82,23 +83,23 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkSelect.Checked)
                             output += MethodGenerator.GenerateSelect(
-                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked),
-                                model, chkClass.Checked);
+                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked),
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
-                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
-                                model, chkClass.Checked);
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked),
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
-                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked),
-                                model, chkClass.Checked);
+                                DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked),
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         if (chkDelete.Checked)
                             output += MethodGenerator.GenerateDelete(
-                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked),
-                                model, chkClass.Checked);
+                                DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked),
+                                model, chkClass.Checked, chkAsync.Checked);
 
                         output += "}";
 
@@ -113,33 +114,33 @@ namespace Dapper.Crud.VSExtension
                         {
                             if (chkSelect.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateUpdate(DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
 
                             if (chkDelete.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked), model, chkClass.Checked);
+                                    MethodGenerator.GenerateDelete(DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
                         }
                         else
                         {
                             if (chkSelect.Checked)
-                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
-                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
 
                             if (chkUpdate.Checked)
-                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked);
+                                txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
 
                             if (chkDelete.Checked)
-                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked);
+                                txtOutput.Text += DapperGenerator.Delete(model, propertiesDelete, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked);
                         }
                     }
 
@@ -148,16 +149,16 @@ namespace Dapper.Crud.VSExtension
                         output = InterfaceGenerator.GenerateInterfaceBody(model);
 
                         if (chkSelect.Checked)
-                            output += InterfaceGenerator.GenerateSelect(model);
+                            output += InterfaceGenerator.GenerateSelect(model, chkAsync.Checked);
 
                         if (chkInsert.Checked)
-                            output += InterfaceGenerator.GenerateInsert(model);
+                            output += InterfaceGenerator.GenerateInsert(model, chkAsync.Checked);
 
                         if (chkUpdate.Checked)
-                            output += InterfaceGenerator.GenerateUpdate(model);
+                            output += InterfaceGenerator.GenerateUpdate(model, chkAsync.Checked);
 
                         if (chkDelete.Checked)
-                            output += InterfaceGenerator.GenerateDelete(model);
+                            output += InterfaceGenerator.GenerateDelete(model, chkAsync.Checked);
 
                         output += "}";
 
@@ -186,20 +187,54 @@ namespace Dapper.Crud.VSExtension
             txtOutput.Styles[Style.Default].Size = 10;
             txtOutput.StyleClearAll();
 
-            // Configure the CPP (C#) lexer styles
-            txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Silver;
-            txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
-            txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
-            txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
-            txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
-            txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
-            txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
-            txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+            if (_darkMode)
+            {
+                // Configure the CPP (C#) lexer styles
+                txtOutput.Styles[Style.Cpp.Default].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
+                txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
+                txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
+                txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+
+                txtOutput.Styles[Style.Cpp.Comment].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.CommentLine].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Number].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Word].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Word2].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.String].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Character].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Verbatim].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Operator].BackColor = Color.FromArgb(41, 41, 41);
+                txtOutput.Styles[Style.Cpp.Preprocessor].BackColor = Color.FromArgb(41, 41, 41);
+            }
+            else
+            {
+                // Configure the CPP (C#) lexer styles
+                txtOutput.Styles[Style.Cpp.Default].ForeColor = Color.Silver;
+                txtOutput.Styles[Style.Cpp.Comment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLine].ForeColor = Color.FromArgb(0, 128, 0); // Green
+                txtOutput.Styles[Style.Cpp.CommentLineDoc].ForeColor = Color.FromArgb(128, 128, 128); // Gray
+                txtOutput.Styles[Style.Cpp.Number].ForeColor = Color.Olive;
+                txtOutput.Styles[Style.Cpp.Word].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.Word2].ForeColor = Color.Blue;
+                txtOutput.Styles[Style.Cpp.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Character].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.Verbatim].ForeColor = Color.FromArgb(163, 21, 21); // Red
+                txtOutput.Styles[Style.Cpp.StringEol].BackColor = Color.Pink;
+                txtOutput.Styles[Style.Cpp.Operator].ForeColor = Color.Purple;
+                txtOutput.Styles[Style.Cpp.Preprocessor].ForeColor = Color.Maroon;
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -298,19 +333,52 @@ namespace Dapper.Crud.VSExtension
             chkGenerateMethod.Checked = chkClass.Checked;
         }
 
-        private void linkMail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("mailto: dappercrudgenerator@gmail.com");
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://paypal.me/thiagoloureiro");
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://paypal.me/thiagoloureiro");
+            Process.Start("https://www.buymeacoffee.com/Obk4RIZ");
+        }
+
+        private void btnChangeMode_Click(object sender, EventArgs e)
+        {
+            SetTxtStyles();
+            if (!_darkMode)
+            {
+                this.BackColor = SystemColors.Control;
+
+                foreach (Control child in this.Controls)
+                {
+                    child.ForeColor = Color.Black;
+                    txtOutput.BackColor = SystemColors.Control;
+                    txtOutputLog.BackColor = SystemColors.Control;
+                    lstFiles.BackColor = SystemColors.Control;
+                }
+
+                foreach (var button in this.Controls.OfType<Button>())
+                {
+                    button.BackColor = SystemColors.Control;
+                }
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(41, 41, 41);
+
+                foreach (Control child in this.Controls)
+                {
+                    child.ForeColor = Color.WhiteSmoke;
+                    txtOutputLog.BackColor = Color.FromArgb(41, 41, 41);
+                    lstFiles.BackColor = Color.FromArgb(41, 41, 41);
+                }
+
+                foreach (var button in this.Controls.OfType<Button>())
+                {
+                    button.BackColor = Color.FromArgb(100, 100, 100);
+                    button.FlatStyle = FlatStyle.Flat;
+
+                    button.FlatAppearance.BorderColor = Color.DarkGray;
+                }
+            }
+            btnChangeMode.Text = _darkMode ? "White mode" : "Dark mode";
+            _darkMode = !_darkMode;
         }
     }
 }

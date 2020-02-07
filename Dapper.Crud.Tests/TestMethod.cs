@@ -16,13 +16,29 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Insert("User", props, false, false, false);
+            var content = DapperGenerator.Insert("User", props, false, false, false, false);
 
             // Act
-            var ret = MethodGenerator.GenerateInsert(content, model, false);
+            var ret = MethodGenerator.GenerateInsert(content, model, false, false);
 
             // Assert
             Assert.Contains("public void InsertUser(User user)", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateInsertAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Insert("User", props, false, false, false, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateInsert(content, model, false, true);
+
+            // Assert
+            Assert.Contains("public async Task InsertUser(User user)", ret);
             Assert.Contains(content, ret);
         }
 
@@ -32,13 +48,29 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Select("User", props, false, false);
+            var content = DapperGenerator.Select("User", props, false, false, false);
 
             // Act
-            var ret = MethodGenerator.GenerateSelect(content, model, false);
+            var ret = MethodGenerator.GenerateSelect(content, model, false, false);
 
             // Assert
-            Assert.Contains("public List<User> SelectUser()", ret);
+            Assert.Contains("public IEnumerable<User> SelectUser()", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateSelectAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Select("User", props, false, false, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateSelect(content, model, false, true);
+
+            // Assert
+            Assert.Contains("public async Task<IEnumerable<User>> SelectUser()", ret);
             Assert.Contains(content, ret);
         }
 
@@ -48,13 +80,29 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Update("User", props, false, false, false);
+            var content = DapperGenerator.Update("User", props, false, false, false, false);
 
             // Act
-            var ret = MethodGenerator.GenerateUpdate(content, model, false);
+            var ret = MethodGenerator.GenerateUpdate(content, model, false, false);
 
             // Assert
             Assert.Contains("public void UpdateUser(User user)", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateUpdateAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Update("User", props, false, false, false, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateUpdate(content, model, false, true);
+
+            // Assert
+            Assert.Contains("public async Task UpdateUser(User user)", ret);
             Assert.Contains(content, ret);
         }
 
@@ -64,13 +112,29 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Delete("User", props, false, false);
+            var content = DapperGenerator.Delete("User", props, false, false, false);
 
             // Act
-            var ret = MethodGenerator.GenerateDelete(content, model, false);
+            var ret = MethodGenerator.GenerateDelete(content, model, false, false);
 
             // Assert
             Assert.Contains("public void DeleteUser(User user)", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateDeleteAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Delete("User", props, false, false, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateDelete(content, model, false, true);
+
+            // Assert
+            Assert.Contains("public async Task DeleteUser(User user)", ret);
             Assert.Contains(content, ret);
         }
     }
