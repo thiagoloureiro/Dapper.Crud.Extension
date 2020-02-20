@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;
+using Microsoft.VisualStudio.Utilities;
 
 namespace Dapper.Crud.VSExtension
 {
@@ -86,10 +87,11 @@ namespace Dapper.Crud.VSExtension
         private void MenuItemCallback(object sender, EventArgs e)
         {
             // Create the window with the unused ID.
-
-            var obj = new frmExtension();
-            obj.Show();
-
+            using (DpiAwareness.EnterDpiScope(DpiAwarenessContext.SystemAware))
+            {
+                var obj = new frmExtension();
+                obj.Show();
+            }
             //string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
             //string title = "CreateCrud";
 
