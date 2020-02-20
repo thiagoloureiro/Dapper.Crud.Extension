@@ -272,9 +272,10 @@ namespace Dapper.Crud.VSExtension
             Assembly.LoadFrom(installationPath + "System.Web.Optimization.dll");
             Assembly.LoadFrom(installationPath + "System.Web.Mvc.dll");
             Assembly.LoadFrom(installationPath + "Dapper.Contrib.dll");
+            Assembly.LoadFrom(installationPath + "Microsoft.AspNetCore.Mvc.dll");
 
             var file = Projectpath + model + ".cs";
-            var objectModel = ModelHelper.Generate(File.ReadAllLines(file), RawContent, model);
+            var objectModel = ModelHelper.Generate(CleanupAttributes(File.ReadAllLines(file)), CleanupAttributes(RawContent), model);
             List<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
 
             var types = ModelHelper.Types();
@@ -290,6 +291,29 @@ namespace Dapper.Crud.VSExtension
             var sortedProps = SortProperties(props);
 
             return sortedProps;
+        }
+
+        private string[] CleanupAttributes(string[] content)
+        {
+            for (int i = 0; i < content.Length; i++)
+            {
+                content[i] = content[i].Trim().Replace("[HiddenInput]", "//[HiddenInput]");
+                content[i] = content[i].Trim().Replace("[DisplayValue]", "//[DisplayValue]");
+                content[i] = content[i].Trim().Replace("[ErrorMessage]", "//[ErrorMessage]");
+                content[i] = content[i].Trim().Replace("[Required]", "//[Required]");
+            }
+
+            return content;
+        }
+
+        private string CleanupAttributes(string content)
+        {
+            content = content.Replace("[HiddenInput]", "//[HiddenInput]");
+            content = content.Replace("[DisplayValue]", "//[DisplayValue]");
+            content = content.Replace("[ErrorMessage]", "//[ErrorMessage]");
+            content = content.Replace("[Required]", "//[Required]");
+
+            return content;
         }
 
         private IList<PropertyInfo> SortProperties(IList<PropertyInfo> prop)
