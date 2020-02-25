@@ -297,10 +297,10 @@ namespace Dapper.Crud.VSExtension
         {
             for (int i = 0; i < content.Length; i++)
             {
-                content[i] = content[i].Trim().Replace("[HiddenInput]", "//[HiddenInput]");
-                content[i] = content[i].Trim().Replace("[DisplayValue]", "//[DisplayValue]");
-                content[i] = content[i].Trim().Replace("[ErrorMessage]", "//[ErrorMessage]");
-                content[i] = content[i].Trim().Replace("[Required]", "//[Required]");
+                content[i] = content[i].Trim().Replace("[HiddenInput", "//[HiddenInput");
+                content[i] = content[i].Trim().Replace("[DisplayValue", "//[DisplayValue");
+                content[i] = content[i].Trim().Replace("[ErrorMessage", "//[ErrorMessage");
+                content[i] = content[i].Trim().Replace("[Required", "//[Required");
             }
 
             return content;
@@ -308,10 +308,10 @@ namespace Dapper.Crud.VSExtension
 
         private string CleanupAttributes(string content)
         {
-            content = content.Replace("[HiddenInput]", "//[HiddenInput]");
-            content = content.Replace("[DisplayValue]", "//[DisplayValue]");
-            content = content.Replace("[ErrorMessage]", "//[ErrorMessage]");
-            content = content.Replace("[Required]", "//[Required]");
+            content = content.Replace("[HiddenInput", "//[HiddenInput");
+            content = content.Replace("[DisplayValue", "//[DisplayValue");
+            content = content.Replace("[ErrorMessage", "//[ErrorMessage");
+            content = content.Replace("[Required", "//[Required");
 
             return content;
         }
