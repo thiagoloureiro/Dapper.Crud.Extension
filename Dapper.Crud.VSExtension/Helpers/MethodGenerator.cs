@@ -27,7 +27,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string GenerateInsert(string content, string model, bool generateClass, bool async)
+        public static string GenerateInsert(string content, string model, bool generateClass, bool async, bool insertedId)
         {
             var space = "";
             model = FixClassName(model);
@@ -37,11 +37,20 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             var sb = new StringBuilder();
 
-            if (async)
-                sb.AppendLine(space + $"public async Task Insert{model}({model} {model.ToLower()})");
+            if (insertedId)
+            {
+                if (async)
+                    sb.AppendLine(space + $"public async Task<int> Insert{model}({model} {model.ToLower()})");
+                else
+                    sb.AppendLine(space + $"public int Insert{model}({model} {model.ToLower()})");
+            }
             else
-                sb.AppendLine(space + $"public void Insert{model}({model} {model.ToLower()})");
-
+            {
+                if (async)
+                    sb.AppendLine(space + $"public async Task Insert{model}({model} {model.ToLower()})");
+                else
+                    sb.AppendLine(space + $"public void Insert{model}({model} {model.ToLower()})");
+            }
             sb.AppendLine(space + "{");
             sb.Append(content);
             sb.AppendLine(space + "}");

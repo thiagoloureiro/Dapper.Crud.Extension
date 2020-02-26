@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dapper.Crud.VSExtension
@@ -88,8 +87,8 @@ namespace Dapper.Crud.VSExtension
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
-                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked),
-                                model, chkClass.Checked, chkAsync.Checked);
+                                DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked, chkReturnIdentity.Checked),
+                                model, chkClass.Checked, chkAsync.Checked, chkReturnIdentity.Checked);
 
                         if (chkUpdate.Checked)
                             output += MethodGenerator.GenerateUpdate(
@@ -118,7 +117,7 @@ namespace Dapper.Crud.VSExtension
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateInsert(DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked, chkReturnIdentity.Checked), model, chkClass.Checked, chkAsync.Checked, chkReturnIdentity.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text +=
@@ -134,7 +133,7 @@ namespace Dapper.Crud.VSExtension
                                 txtOutput.Text += DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked);
 
                             if (chkInsert.Checked)
-                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
+                                txtOutput.Text += DapperGenerator.Insert(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked, chkReturnIdentity.Checked);
 
                             if (chkUpdate.Checked)
                                 txtOutput.Text += DapperGenerator.Update(model, propertiesUpdate, chkGenerateMethod.Checked, chkClass.Checked, chkAutoIncrement.Checked, chkAsync.Checked);
@@ -152,7 +151,7 @@ namespace Dapper.Crud.VSExtension
                             output += InterfaceGenerator.GenerateSelect(model, chkAsync.Checked);
 
                         if (chkInsert.Checked)
-                            output += InterfaceGenerator.GenerateInsert(model, chkAsync.Checked);
+                            output += InterfaceGenerator.GenerateInsert(model, chkAsync.Checked, chkReturnIdentity.Checked);
 
                         if (chkUpdate.Checked)
                             output += InterfaceGenerator.GenerateUpdate(model, chkAsync.Checked);
@@ -276,7 +275,7 @@ namespace Dapper.Crud.VSExtension
 
             var file = Projectpath + model + ".cs";
             var objectModel = ModelHelper.Generate(CleanupAttributes(File.ReadAllLines(file)), CleanupAttributes(RawContent), model);
-            List<PropertyInfo> props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
+            var props = new List<PropertyInfo>(objectModel.GetType().GetProperties());
 
             var types = ModelHelper.Types();
 

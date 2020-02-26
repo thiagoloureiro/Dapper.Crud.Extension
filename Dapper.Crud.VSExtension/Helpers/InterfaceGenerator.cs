@@ -31,17 +31,26 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string GenerateInsert(string model, bool async)
+        public static string GenerateInsert(string model, bool async, bool insertedId)
         {
             model = FixClassName(model);
 
             var sb = new StringBuilder();
 
-            if (async)
-                sb.AppendLine($"    Task Insert{model}({model} {model.ToLower()});");
+            if (insertedId)
+            {
+                if (async)
+                    sb.AppendLine($"    Task<int> Insert{model}({model} {model.ToLower()});");
+                else
+                    sb.AppendLine($"    int Insert{model}({model} {model.ToLower()});");
+            }
             else
-                sb.AppendLine($"    void Insert{model}({model} {model.ToLower()});");
-
+            {
+                if (async)
+                    sb.AppendLine($"    Task Insert{model}({model} {model.ToLower()});");
+                else
+                    sb.AppendLine($"    void Insert{model}({model} {model.ToLower()});");
+            }
             return sb.ToString();
         }
 

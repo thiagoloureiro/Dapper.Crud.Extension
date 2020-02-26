@@ -16,10 +16,10 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Insert("User", props, false, false, false, false);
+            var content = DapperGenerator.Insert("User", props, false, false, false, false, false);
 
             // Act
-            var ret = MethodGenerator.GenerateInsert(content, model, false, false);
+            var ret = MethodGenerator.GenerateInsert(content, model, false, false, false);
 
             // Assert
             Assert.Contains("public void InsertUser(User user)", ret);
@@ -32,13 +32,45 @@ namespace Dapper.Crud.Tests
             // Arrange
             var objUser = new User();
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
-            var content = DapperGenerator.Insert("User", props, false, false, false, true);
+            var content = DapperGenerator.Insert("User", props, false, false, false, true, false);
 
             // Act
-            var ret = MethodGenerator.GenerateInsert(content, model, false, true);
+            var ret = MethodGenerator.GenerateInsert(content, model, false, true, false);
 
             // Assert
             Assert.Contains("public async Task InsertUser(User user)", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateReturnIdInsert()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Insert("User", props, false, false, false, false, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateInsert(content, model, false, false, true);
+
+            // Assert
+            Assert.Contains("public int InsertUser(User user)", ret);
+            Assert.Contains(content, ret);
+        }
+
+        [Fact]
+        public void GenerateReturnIdInsertAsync()
+        {
+            // Arrange
+            var objUser = new User();
+            IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
+            var content = DapperGenerator.Insert("User", props, false, false, false, true, true);
+
+            // Act
+            var ret = MethodGenerator.GenerateInsert(content, model, false, true, true);
+
+            // Assert
+            Assert.Contains("public async Task<int> InsertUser(User user)", ret);
             Assert.Contains(content, ret);
         }
 

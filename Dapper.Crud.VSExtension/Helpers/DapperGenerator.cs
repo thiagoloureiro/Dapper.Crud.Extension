@@ -84,7 +84,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return model;
         }
 
-        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async)
+        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async, bool insertedId)
         {
             model = FixClassName(model);
             var space = "";
@@ -106,13 +106,36 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "// Insert");
             sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
             sb.AppendLine(space + "{");
-            sb.AppendLine(space + $"    string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt})\";");
+
+            if (insertedId)
+                sb.AppendLine(space + $"    string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt});select @@IDENTITY;\";");
+            else
+                sb.AppendLine(space + $"    string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt})\";");
+
             sb.AppendLine("");
 
-            if (async)
-                sb.AppendLine(space + $"    await db.ExecuteAsync(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+            if (insertedId)
+            {
+                if (async)
+                    sb.AppendLine(
+                        space +
+                        $"   return await db.QueryAsync<int>(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text).Single();");
+                else
+                    sb.AppendLine(
+                        space +
+                        $"   return db.QuerySingle<int>(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+            }
             else
-                sb.AppendLine(space + $"    db.Execute(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+            {
+                if (async)
+                    sb.AppendLine(
+                        space +
+                        $"    await db.ExecuteAsync(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+                else
+                    sb.AppendLine(
+                        space +
+                        $"    db.Execute(sql, new {{ {GenerateParameters(properties, model)} }}, commandType: CommandType.Text);");
+            }
 
             sb.AppendLine(space + "}");
 

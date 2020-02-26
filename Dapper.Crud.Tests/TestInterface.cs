@@ -42,7 +42,7 @@ namespace Dapper.Crud.Tests
         public void InsertTest()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateInsert(model, false);
+            var ret = InterfaceGenerator.GenerateInsert(model, false, false);
 
             // Assert
             Assert.Contains($"void InsertUser(User user);", ret);
@@ -52,10 +52,30 @@ namespace Dapper.Crud.Tests
         public void InsertTestAsync()
         {
             // Act
-            var ret = InterfaceGenerator.GenerateInsert(model, true);
+            var ret = InterfaceGenerator.GenerateInsert(model, true, false);
 
             // Assert
             Assert.Contains($"Task InsertUser(User user);", ret);
+        }
+
+        [Fact]
+        public void InsertReturnIdTest()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateInsert(model, false, true);
+
+            // Assert
+            Assert.Contains($"int InsertUser(User user);", ret);
+        }
+
+        [Fact]
+        public void InsertReturnIdTestAsync()
+        {
+            // Act
+            var ret = InterfaceGenerator.GenerateInsert(model, true, true);
+
+            // Assert
+            Assert.Contains($"Task<int> InsertUser(User user);", ret);
         }
 
         [Fact]
