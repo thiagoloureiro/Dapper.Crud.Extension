@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Threading;
+﻿using Microsoft.VisualStudio.Shell.Interop;
 using System;
 
 namespace Dapper.Crud.VSExtension
@@ -23,7 +21,7 @@ namespace Dapper.Crud.VSExtension
             {
                 if (EnsurePane())
                 {
-                    ThreadHelper.Generic.BeginInvoke(() =>
+                    Microsoft.VisualStudio.Shell.ThreadHelper.Generic.BeginInvoke(() =>
                     {
                         _pane.OutputStringThreadSafe(DateTime.Now + ": " + message + Environment.NewLine);
                     });
@@ -39,7 +37,7 @@ namespace Dapper.Crud.VSExtension
         {
             if (_pane == null)
             {
-                ThreadHelper.JoinableTaskFactory.Run(async () =>
+                Microsoft.VisualStudio.Shell.ThreadHelper.JoinableTaskFactory.Run(async () =>
                 {
                     IVsOutputWindow output = (IVsOutputWindow)_provider.GetService(typeof(SVsOutputWindow));
                     if (_pane == null)

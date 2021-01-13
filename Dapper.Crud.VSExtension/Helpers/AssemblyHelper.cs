@@ -8,6 +8,8 @@ namespace Dapper.Crud.VSExtension.Helpers
 {
     public static class AssemblyHelper
     {
+        public static string codeGlobal;
+
         private static Assembly BuildAssembly(string code)
         {
             using (var compiler = new Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider())
@@ -19,7 +21,7 @@ namespace Dapper.Crud.VSExtension.Helpers
                 {
                     GenerateExecutable = false,
                     GenerateInMemory = true,
-                    CompilerOptions = "/unsafe /optimize /langversion:7.1"
+                    CompilerOptions = "/unsafe /optimize /langversion:8.0"
                 };
 
                 var assemblies = AppDomain.CurrentDomain
@@ -55,6 +57,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
         public static object ExecuteCode(string code, string namespacename, string classname, bool isstatic)
         {
+            codeGlobal = code;
             Assembly asm = BuildAssembly(code);
             classname = FixClassName(classname);
 

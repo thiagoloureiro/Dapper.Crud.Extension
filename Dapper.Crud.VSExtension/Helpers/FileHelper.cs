@@ -56,8 +56,10 @@ namespace Dapper.Crud.VSExtension.Helpers
                 var strContent = File.ReadAllLines(file);
                 foreach (var line in strContent)
                 {
-                    if (line.Contains("using"))
+                    if (line.StartsWith("using") && line.EndsWith(";"))
+                    {
                         lstUsings.Add(line);
+                    }
                     else
                         lstContent.Add(line);
                 }

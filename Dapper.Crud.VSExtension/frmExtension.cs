@@ -173,9 +173,9 @@ namespace Dapper.Crud.VSExtension
             catch (Exception ex)
             {
                 SetLoading(false);
-                Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}");
+                Logger.Log($"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace} Code {AssemblyHelper.codeGlobal}");
                 txtOutputLog.ForeColor = Color.Red;
-                txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace}";
+                txtOutputLog.Text = $"Error during the operation: {ex.Message} InnerException {ex.InnerException} StackTrace {ex.StackTrace} Code {AssemblyHelper.codeGlobal}";
             }
         }
 
