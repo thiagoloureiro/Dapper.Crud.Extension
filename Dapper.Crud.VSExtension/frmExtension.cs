@@ -358,7 +358,7 @@ namespace Dapper.Crud.VSExtension
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.buymeacoffee.com/Obk4RIZ");
+            Process.Start("https://ko-fi.com/thiagoguaru");
         }
 
         private void btnChangeMode_Click(object sender, EventArgs e)
