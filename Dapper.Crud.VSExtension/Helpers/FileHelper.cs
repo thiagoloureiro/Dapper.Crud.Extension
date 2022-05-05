@@ -23,8 +23,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             foreach (var file in files)
             {
-                if (!CheckInterface(file))
-                    filteredlist.Add(file);
+                filteredlist.Add(file);
             }
 
             filteredlist.RemoveAll(x => x.Contains("TemporaryGeneratedFile"));
@@ -67,6 +66,11 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             var sbResult = new StringBuilder();
 
+            lstUsings.Add("using System;");
+            lstUsings.Add("using System.Collections;");
+            lstUsings.Add("using System.Collections.Generic;");
+            lstUsings.Add("using System.Threading;");
+            lstUsings.Add("using System.Threading.Tasks;");
             lstUsings.Add("using System.Linq;");
             lstUsings.Add("using System.Text;");
             lstUsings.Add("using System.ComponentModel;");

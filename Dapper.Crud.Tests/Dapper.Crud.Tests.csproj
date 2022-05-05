@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="ModelTest.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="TestCode.cs" />
     <Compile Include="TestInterface.cs" />
     <Compile Include="TestAssembly.cs" />
     <Compile Include="TestDelete.cs" />

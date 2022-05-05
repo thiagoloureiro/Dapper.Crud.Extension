@@ -7,7 +7,7 @@ namespace Dapper.Crud.VSExtension.Helpers
 {
     public static class DapperGenerator
     {
-        public static string SelectJoin(List<string> models, List<IList<PropertyInfo>> properties, bool generateMethod, bool generateClass)
+        public static string SelectJoin(List<string> models, List<IList<PropertyInfo>> properties, bool generateMethod, bool generateClass, bool awaitUsing)
         {
             var space = "";
 
@@ -28,8 +28,10 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             sb.AppendLine(space + "// Select");
             sb.AppendLine(space + $"List<{models[0]}> ret;");
-            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
-            sb.AppendLine(space + "{");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
             sb.AppendLine(space + $"    string sql = @\"SELECT {prop} FROM [{models[0]}] D0");
 
             for (int i = 1; i < arrProp.Length; i++)
@@ -45,7 +47,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string Select(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool async)
+        public static string Select(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool async, bool awaitUsing)
         {
             model = FixClassName(model);
             var space = "";
@@ -59,7 +61,11 @@ namespace Dapper.Crud.VSExtension.Helpers
             var prop = GenerateProperties(properties, false);
 
             sb.AppendLine(space + "// Select");
-            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
+
             sb.AppendLine(space + "{");
             sb.AppendLine(space + $"    string sql = @\"SELECT {prop} FROM [{model}]\";");
             sb.AppendLine("");
@@ -84,7 +90,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return model;
         }
 
-        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async, bool insertedId)
+        public static string Insert(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async, bool insertedId, bool awaitUsing)
         {
             model = FixClassName(model);
             var space = "";
@@ -104,8 +110,10 @@ namespace Dapper.Crud.VSExtension.Helpers
             var propAt = GenerateProperties(properties, true);
 
             sb.AppendLine(space + "// Insert");
-            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
-            sb.AppendLine(space + "{");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
 
             if (insertedId)
                 sb.AppendLine(space + $"    string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt});select @@IDENTITY;\";");
@@ -142,7 +150,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string Update(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async)
+        public static string Update(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool autoIncrement, bool async, bool awaitUsing)
         {
             model = FixClassName(model);
             var space = "";
@@ -162,8 +170,11 @@ namespace Dapper.Crud.VSExtension.Helpers
             var sb = new StringBuilder();
 
             sb.AppendLine(space + "// Update");
-            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
-            sb.AppendLine(space + "{");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+
             sb.AppendLine(space + $"    string sql = @\"UPDATE [{model}] SET {GenerateUpdateValues(properties)} WHERE {propId.Name} = @{propId.Name}\";");
             sb.AppendLine("");
 
@@ -186,7 +197,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string Delete(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool async)
+        public static string Delete(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool async, bool awaitUsing)
         {
             model = FixClassName(model);
             var space = "";
@@ -199,8 +210,11 @@ namespace Dapper.Crud.VSExtension.Helpers
             var sb = new StringBuilder();
 
             sb.AppendLine(space + "// Delete");
-            sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
-            sb.AppendLine(space + "{");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+
             sb.AppendLine(space + $"    string sql = @\"DELETE FROM [{model}] WHERE {properties[0].Name} = @{properties[0].Name}\";");
             sb.AppendLine("");
 
