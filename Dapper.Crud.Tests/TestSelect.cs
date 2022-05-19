@@ -16,7 +16,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Select("User", props, false, false, false);
+            var ret = DapperGenerator.Select("User", props, false, false, false, false);
 
             // Assert
             Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
@@ -31,7 +31,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Select("User", props, false, false, true);
+            var ret = DapperGenerator.Select("User", props, false, false, true, false);
 
             // Assert
             Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);
@@ -61,7 +61,7 @@ namespace Dapper.Crud.Tests
             };
 
             // Act
-            var ret = DapperGenerator.SelectJoin(models, lstProperties, false, false);
+            var ret = DapperGenerator.SelectJoin(models, lstProperties, false, false, false);
 
             // Assert
             Assert.Contains("SELECT Id, Name, Email FROM [User]", ret);

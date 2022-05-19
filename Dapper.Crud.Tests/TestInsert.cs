@@ -16,7 +16,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, false, false, false);
+            var ret = DapperGenerator.Insert("User", props, false, false, false, false, false, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
@@ -31,7 +31,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, false, false, true);
+            var ret = DapperGenerator.Insert("User", props, false, false, false, false, true, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
@@ -46,7 +46,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, false, true, true);
+            var ret = DapperGenerator.Insert("User", props, false, false, false, true, true, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
@@ -61,7 +61,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, false, true, false);
+            var ret = DapperGenerator.Insert("User", props, false, false, false, true, false, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Id, Name, Email) VALUES (@Id, @Name, @Email)", ret);
@@ -76,7 +76,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, true, false, false);
+            var ret = DapperGenerator.Insert("User", props, false, false, true, false, false, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Name, Email) VALUES (@Name, @Email)", ret);
@@ -91,7 +91,7 @@ namespace Dapper.Crud.Tests
             IList<PropertyInfo> props = new List<PropertyInfo>(objUser.GetType().GetProperties());
 
             // Act
-            var ret = DapperGenerator.Insert("User", props, false, false, true, true, false);
+            var ret = DapperGenerator.Insert("User", props, false, false, true, true, false, false);
 
             // Assert
             Assert.Contains("INSERT INTO [User] (Name, Email) VALUES (@Name, @Email)", ret);
