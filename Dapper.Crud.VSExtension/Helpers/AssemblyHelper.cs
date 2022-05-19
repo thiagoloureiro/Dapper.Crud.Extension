@@ -21,7 +21,7 @@ namespace Dapper.Crud.VSExtension.Helpers
                 {
                     GenerateExecutable = false,
                     GenerateInMemory = true,
-                    CompilerOptions = "/unsafe /optimize /langversion:8.0"
+                    CompilerOptions = "/unsafe /optimize /langversion:10.0"
                 };
 
                 var assemblies = AppDomain.CurrentDomain
