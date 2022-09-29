@@ -23,6 +23,7 @@ namespace Dapper.Crud.VSExtension.Helpers
         {
             var lst = new List<string>
             {
+                "boolean",
                 "bool",
                 "byte",
                 "char",
