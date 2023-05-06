@@ -276,7 +276,7 @@ namespace Dapper.Crud.VSExtension
             {
                 var model = file.Replace(Projectpath, "").Replace(".cs", "");
 
-                if (!model.Contains(@"\obj\"))
+                if (!model.Contains(@"obj\"))
                     lstFiles.Items.Add(model);
             }
 

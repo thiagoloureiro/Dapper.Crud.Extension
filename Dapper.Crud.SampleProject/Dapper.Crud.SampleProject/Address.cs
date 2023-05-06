@@ -1,4 +1,4 @@
-﻿namespace Dapper.Crud.ModelExample
+﻿namespace Dapper.Crud.SampleProject
 {
     public class Address
     {
