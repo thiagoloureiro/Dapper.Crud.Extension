@@ -57,6 +57,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnChangeMode = new System.Windows.Forms.Button();
             this.chkReturnIdentity = new System.Windows.Forms.CheckBox();
+            this.SelectAllClass = new System.Windows.Forms.Button();
             this.gBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -221,7 +222,7 @@
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(119, 0);
+            this.btnSelectAll.Location = new System.Drawing.Point(119, -1);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
             this.btnSelectAll.TabIndex = 17;
@@ -236,7 +237,7 @@
             this.groupBox1.Controls.Add(this.chkClass);
             this.groupBox1.Controls.Add(this.chkGenerateMethod);
             this.groupBox1.Controls.Add(this.chkInterface);
-            this.groupBox1.Location = new System.Drawing.Point(12, 261);
+            this.groupBox1.Location = new System.Drawing.Point(12, 258);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 136);
             this.groupBox1.TabIndex = 16;
@@ -351,11 +352,22 @@
             this.chkReturnIdentity.Text = "InsertedId";
             this.chkReturnIdentity.UseVisualStyleBackColor = true;
             // 
+            // SelectAllClass
+            // 
+            this.SelectAllClass.Location = new System.Drawing.Point(131, 257);
+            this.SelectAllClass.Name = "SelectAllClass";
+            this.SelectAllClass.Size = new System.Drawing.Size(75, 23);
+            this.SelectAllClass.TabIndex = 18;
+            this.SelectAllClass.Text = "Select All";
+            this.SelectAllClass.UseVisualStyleBackColor = true;
+            this.SelectAllClass.Click += new System.EventHandler(this.SelectAllClass_Click);
+            // 
             // frmExtension
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 730);
+            this.Controls.Add(this.SelectAllClass);
             this.Controls.Add(this.chkReturnIdentity);
             this.Controls.Add(this.btnChangeMode);
             this.Controls.Add(this.linkLabel1);
@@ -377,7 +389,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExtension";
-            this.Text = "Dapper Extension 3.0.14";
+            this.Text = "Dapper Extension 4.0.1";
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -418,5 +430,6 @@
         private System.Windows.Forms.Button btnChangeMode;
         private System.Windows.Forms.CheckBox chkReturnIdentity;
         private System.Windows.Forms.CheckBox chkAwaitUsing;
+        private System.Windows.Forms.Button SelectAllClass;
     }
 }

@@ -7,13 +7,15 @@ namespace Dapper.Crud.VSExtension.Helpers
     {
         public static string GenerateClassBody(string model, bool interfaceEnabled)
         {
+            var space = "    ";
             model = FixClassName(model);
             var sb = new StringBuilder();
             sb.AppendLine(interfaceEnabled
                 ? $"public class {model}Repository : I{model}Repository"
                 : $"public class {model}Repository");
             sb.AppendLine("{");
-
+            sb.AppendLine(space + "private readonly string _connstring;");
+            sb.AppendLine();
             return sb.ToString();
         }
 

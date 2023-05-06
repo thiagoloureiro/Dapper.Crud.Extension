@@ -27,6 +27,28 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
+        public static string GenerateSelectById(string content, string model, bool generateClass, bool async)
+        {
+            var space = "";
+            model = FixClassName(model);
+
+            if (generateClass)
+                space = "    ";
+
+            var sb = new StringBuilder();
+
+            if (async)
+                sb.AppendLine(space + $"public async Task<{model}> Select{model}ById(int id)");
+            else
+                sb.AppendLine(space + $"public {model} Select{model}ById(int id)");
+
+            sb.AppendLine(space + "{");
+            sb.Append(content);
+            sb.AppendLine(space + "}");
+
+            return sb.ToString();
+        }
+
         public static string GenerateInsert(string content, string model, bool generateClass, bool async, bool insertedId)
         {
             var space = "";

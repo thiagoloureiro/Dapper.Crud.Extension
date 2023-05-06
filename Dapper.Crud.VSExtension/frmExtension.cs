@@ -79,9 +79,17 @@ namespace Dapper.Crud.VSExtension
                         output += ClassGenerator.GenerateClassBody(model, chkInterface.Checked);
 
                         if (chkSelect.Checked)
+                        {
                             output += MethodGenerator.GenerateSelect(
-                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked, chkAwaitUsing.Checked),
+                                DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked,
+                                    chkAsync.Checked, chkAwaitUsing.Checked),
                                 model, chkClass.Checked, chkAsync.Checked);
+
+                            output += MethodGenerator.GenerateSelectById(
+                                DapperGenerator.SelectById(model, properties, chkGenerateMethod.Checked, chkClass.Checked,
+                                    chkAsync.Checked, chkAwaitUsing.Checked),
+                                model, chkClass.Checked, chkAsync.Checked);
+                        }
 
                         if (chkInsert.Checked)
                             output += MethodGenerator.GenerateInsert(
@@ -110,8 +118,19 @@ namespace Dapper.Crud.VSExtension
                         if (chkGenerateMethod.Checked)
                         {
                             if (chkSelect.Checked)
+                            {
                                 txtOutput.Text +=
-                                    MethodGenerator.GenerateSelect(DapperGenerator.Select(model, properties, chkGenerateMethod.Checked, chkClass.Checked, chkAsync.Checked, chkAwaitUsing.Checked), model, chkClass.Checked, chkAsync.Checked);
+                                    MethodGenerator.GenerateSelect(
+                                        DapperGenerator.Select(model, properties, chkGenerateMethod.Checked,
+                                            chkClass.Checked, chkAsync.Checked, chkAwaitUsing.Checked), model,
+                                        chkClass.Checked, chkAsync.Checked);
+
+                                txtOutput.Text +=
+                                    MethodGenerator.GenerateSelectById(
+                                        DapperGenerator.Select(model, properties, chkGenerateMethod.Checked,
+                                            chkClass.Checked, chkAsync.Checked, chkAwaitUsing.Checked), model,
+                                        chkClass.Checked, chkAsync.Checked);
+                            }
 
                             if (chkInsert.Checked)
                                 txtOutput.Text +=
@@ -146,8 +165,10 @@ namespace Dapper.Crud.VSExtension
                         output = InterfaceGenerator.GenerateInterfaceBody(model);
 
                         if (chkSelect.Checked)
+                        {
                             output += InterfaceGenerator.GenerateSelect(model, chkAsync.Checked);
-
+                            output += InterfaceGenerator.GenerateSelectById(model, chkAsync.Checked);
+                        }
                         if (chkInsert.Checked)
                             output += InterfaceGenerator.GenerateInsert(model, chkAsync.Checked, chkReturnIdentity.Checked);
 
@@ -403,6 +424,15 @@ namespace Dapper.Crud.VSExtension
             }
             btnChangeMode.Text = _darkMode ? "White mode" : "Dark mode";
             _darkMode = !_darkMode;
+        }
+
+        private void SelectAllClass_Click(object sender, EventArgs e)
+        {
+            chkClass.Checked = true;
+            chkGenerateMethod.Checked = true;
+            chkAsync.Checked = true;
+            chkInterface.Checked = true;
+            chkAwaitUsing.Checked = true;
         }
     }
 }

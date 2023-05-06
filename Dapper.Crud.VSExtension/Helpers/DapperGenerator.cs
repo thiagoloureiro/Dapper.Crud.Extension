@@ -29,9 +29,9 @@ namespace Dapper.Crud.VSExtension.Helpers
             sb.AppendLine(space + "// Select");
             sb.AppendLine(space + $"List<{models[0]}> ret;");
             if (awaitUsing)
-                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
             else
-                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))"); sb.AppendLine(space + "{");
             sb.AppendLine(space + $"    string sql = @\"SELECT {prop} FROM [{models[0]}] D0");
 
             for (int i = 1; i < arrProp.Length; i++)
@@ -62,9 +62,9 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             sb.AppendLine(space + "// Select");
             if (awaitUsing)
-                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
             else
-                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))");
 
             sb.AppendLine(space + "{");
             sb.AppendLine(space + $"    string sql = @\"SELECT {prop} FROM [{model}]\";");
@@ -74,6 +74,39 @@ namespace Dapper.Crud.VSExtension.Helpers
                 sb.AppendLine(space + $"    return await db.QueryAsync<{model}>(sql, commandType: CommandType.Text);");
             else
                 sb.AppendLine(space + $"    return db.Query<{model}>(sql, commandType: CommandType.Text);");
+
+            sb.AppendLine(space + "}");
+
+            return sb.ToString();
+        }
+
+        public static string SelectById(string model, IList<PropertyInfo> properties, bool generateMethod, bool generateClass, bool async, bool awaitUsing)
+        {
+            model = FixClassName(model);
+            var space = "";
+
+            if (generateMethod)
+                space = "    ";
+            if (generateClass)
+                space += "    ";
+
+            var sb = new StringBuilder();
+            var prop = GenerateProperties(properties, false);
+
+            sb.AppendLine(space + "// Select");
+            if (awaitUsing)
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
+            else
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))");
+
+            sb.AppendLine(space + "{");
+            sb.AppendLine(space + $"    string sql = @\"SELECT {prop} FROM [{model}] WHERE {properties[0].Name} = @id\";");
+            sb.AppendLine("");
+
+            if (async)
+                sb.AppendLine(space + $"    return await db.QueryFirstOrDefaultAsync<{model}>(sql, new {{ id }}, commandType: CommandType.Text);");
+            else
+                sb.AppendLine(space + $"    return db.QueryFirstOrDefault<{model}>(sql, new {{ id }}, commandType: CommandType.Text);");
 
             sb.AppendLine(space + "}");
 
@@ -111,9 +144,9 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             sb.AppendLine(space + "// Insert");
             if (awaitUsing)
-                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
             else
-                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))"); sb.AppendLine(space + "{");
 
             if (insertedId)
                 sb.AppendLine(space + $"    string sql = @\"INSERT INTO [{model}] ({prop}) VALUES ({propAt});select @@IDENTITY;\";");
@@ -171,9 +204,9 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             sb.AppendLine(space + "// Update");
             if (awaitUsing)
-                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
             else
-                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))"); sb.AppendLine(space + "{");
 
             sb.AppendLine(space + $"    string sql = @\"UPDATE [{model}] SET {GenerateUpdateValues(properties)} WHERE {propId.Name} = @{propId.Name}\";");
             sb.AppendLine("");
@@ -211,9 +244,9 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             sb.AppendLine(space + "// Delete");
             if (awaitUsing)
-                sb.AppendLine(space + "await using (var db = new SqlConnection(connstring))");
+                sb.AppendLine(space + "await using (var db = new SqlConnection(_connstring))");
             else
-                sb.AppendLine(space + "using (var db = new SqlConnection(connstring))"); sb.AppendLine(space + "{");
+                sb.AppendLine(space + "using (var db = new SqlConnection(_connstring))"); sb.AppendLine(space + "{");
 
             sb.AppendLine(space + $"    string sql = @\"DELETE FROM [{model}] WHERE {properties[0].Name} = @{properties[0].Name}\";");
             sb.AppendLine("");
