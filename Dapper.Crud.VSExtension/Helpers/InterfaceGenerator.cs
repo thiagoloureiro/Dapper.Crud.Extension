@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Dapper.Crud.VSExtension.Helpers
@@ -17,13 +18,13 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string GenerateSelect(string model, bool async)
+        public static string GenerateSelect(string model, bool isAsync)
         {
             model = FixClassName(model);
 
             var sb = new StringBuilder();
 
-            if (async)
+            if (isAsync)
                 sb.AppendLine($"    Task<IEnumerable<{model}>> Select{model}();");
             else
                 sb.AppendLine($"    IEnumerable<{model}> Select{model}();");
@@ -31,13 +32,13 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string GenerateSelectById(string model, bool async)
+        public static string GenerateSelectById(string model, bool isAsync)
         {
             model = FixClassName(model);
 
             var sb = new StringBuilder();
 
-            if (async)
+            if (isAsync)
                 sb.AppendLine($"    Task<{model}> Select{model}ById(int id);");
             else
                 sb.AppendLine($"    {model} Select{model}ById(int id);");
@@ -45,7 +46,7 @@ namespace Dapper.Crud.VSExtension.Helpers
             return sb.ToString();
         }
 
-        public static string GenerateInsert(string model, bool async, bool insertedId)
+        public static string GenerateInsert(string model, bool isAsync, bool insertedId)
         {
             model = FixClassName(model);
 
@@ -53,45 +54,45 @@ namespace Dapper.Crud.VSExtension.Helpers
 
             if (insertedId)
             {
-                if (async)
-                    sb.AppendLine($"    Task<int> Insert{model}({model} {model.ToLower()});");
+                if (isAsync)
+                    sb.AppendLine($"    Task<int> Insert{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
                 else
-                    sb.AppendLine($"    int Insert{model}({model} {model.ToLower()});");
+                    sb.AppendLine($"    int Insert{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
             }
             else
             {
-                if (async)
-                    sb.AppendLine($"    Task Insert{model}({model} {model.ToLower()});");
+                if (isAsync)
+                    sb.AppendLine($"    Task Insert{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
                 else
-                    sb.AppendLine($"    void Insert{model}({model} {model.ToLower()});");
+                    sb.AppendLine($"    void Insert{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
             }
             return sb.ToString();
         }
 
-        public static string GenerateUpdate(string model, bool async)
+        public static string GenerateUpdate(string model, bool isAsync)
         {
             model = FixClassName(model);
 
             var sb = new StringBuilder();
 
-            if (async)
-                sb.AppendLine($"    Task Update{model}({model} {model.ToLower()});");
+            if (isAsync)
+                sb.AppendLine($"    Task Update{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
             else
-                sb.AppendLine($"    void Update{model}({model} {model.ToLower()});");
+                sb.AppendLine($"    void Update{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
 
             return sb.ToString();
         }
 
-        public static string GenerateDelete(string model, bool async)
+        public static string GenerateDelete(string model, bool isAsync)
         {
             model = FixClassName(model);
 
             var sb = new StringBuilder();
 
-            if (async)
-                sb.AppendLine($"    Task Delete{model}({model} {model.ToLower()});");
+            if (isAsync)
+                sb.AppendLine($"    Task Delete{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
             else
-                sb.AppendLine($"    void Delete{model}({model} {model.ToLower()});");
+                sb.AppendLine($"    void Delete{model}({model} {model.ToLower(CultureInfo.InvariantCulture)});");
 
             return sb.ToString();
         }
