@@ -7,7 +7,7 @@ namespace Dapper.Crud.Tests
 {
     public class TestMethod
     {
-        private string model = "User";
+        private readonly string model = "User";
 
         [Fact]
         public void GenerateInsert()

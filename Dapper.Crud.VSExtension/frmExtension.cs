@@ -14,9 +14,9 @@ namespace Dapper.Crud.VSExtension
 {
     public partial class frmExtension : Form
     {
-        public string Projectpath;
-        public string RawContent;
-        public bool _darkMode = false;
+        private string Projectpath;
+        private string RawContent;
+        private bool _darkMode;
 
         public frmExtension()
         {
