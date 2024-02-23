@@ -5,7 +5,7 @@ namespace Dapper.Crud.Tests
 {
     public class TestClass
     {
-        private string model = "User";
+        private readonly string model = "User";
 
         [Fact]
         public void GenerateClass()
