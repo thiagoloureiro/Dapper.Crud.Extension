@@ -38,28 +38,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
+    <PackageReference Include="MessagePack">
+      <Version>3.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestAdapter" Version="3.9.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.9.3" />
     <PackageReference Include="xunit">
-      <Version>2.4.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
     <PackageReference Include="xunit.abstractions">
       <Version>2.0.3</Version>
     </PackageReference>
     <PackageReference Include="xunit.analyzers">
-      <Version>1.1.0</Version>
+      <Version>1.22.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit.assert">
-      <Version>2.4.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
     <PackageReference Include="xunit.core">
-      <Version>2.4.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
     <PackageReference Include="xunit.extensibility.core">
-      <Version>2.4.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
     <PackageReference Include="xunit.runner.visualstudio">
-      <Version>2.4.5</Version>
+      <Version>3.1.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
